@@ -14,3 +14,4 @@ let persona = {apellido:"ruiz"} ;
 console.log(persona);
 console.log(persona.hasOwnProperty("nombre")); //Muetra si una clase tiene alguno de estos tipos de propiedades
 console.log(persona.hasOwnProperty("apellido"));
+
