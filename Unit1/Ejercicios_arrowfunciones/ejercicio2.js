@@ -2,7 +2,7 @@
 function cuadrado_A(array) {
     let arrayC = [];
     for (let i = 0; i < array.length; i++) {
-        arrayC.push(array[i] * array[i]);
+        arrayC.push(Math.pow(array,2));
     }
     return arrayC; 
 }
