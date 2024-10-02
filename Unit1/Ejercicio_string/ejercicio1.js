@@ -1,14 +1,14 @@
-let variable1 = "Ejercicios";
-let variable2 = "Strings";
+let str1 = "Hello";
+let str2 = "World";
 
-let v_a_1 ="'" + variable1 + " " + variable2 + "'";
-let v_a_2 = '"' + variable1 + " " + variable2 + '"';
-let v_a_3 = '`' + variable1 + " " + variable2 + '`';
+// Traditional concatenation
+console.log("Using traditional String concatenation");
+console.log("\'" + str1 + "\' and \'" + str2 + "\'");
+console.log("\"" + str1 + "\" and \"" + str2 + "\"");
+console.log("\`" + str1 + "\` and \`" + str2 + "\`");
 
-
-console.log(v_a_1);
-console.log(v_a_2);
-console.log(v_a_3);
-console.log(v_b_1);
-console.log(v_b_2)
-console.log(v_b_3);
+// String literals
+console.log("\nUsing String literals");
+console.log(`'${str1}\' and \'${str2}'`);
+console.log(`"${str1}\" and \"${str2}"`);
+console.log(`\`${str1}\` and \`${str2}\``);
