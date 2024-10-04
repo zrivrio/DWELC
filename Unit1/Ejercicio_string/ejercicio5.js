@@ -5,13 +5,15 @@ function abreviacion(nombreApellido) {
    
     nombre= partes[0];
 
-    if(partes.length != 1){
-        apellido = partes[partes.length - 1].charAt(0).toUpperCase();
-    }
-    
+        for (let index = 0; index < partes.length; index++) {
+            apellido = partes[1].charAt(0).toUpperCase() + ". ";
+        }
+        partes.array.forEach(i => {
+        });
 
-    
+
+
     console.log(nombre + ' ' + apellido + '.');
 }
 
-abreviacion("Andres Conde");
+abreviacion("Zahira Rivas");
