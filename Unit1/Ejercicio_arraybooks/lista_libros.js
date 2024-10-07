@@ -1,0 +1,43 @@
+const libros =[{titulo:"Libro1",
+                genero:"romance",
+                autor:["autor1","autor2"],
+                paginas: 301,
+                publicado: a ,
+                leido: true,
+                sitioweb:""
+},{titulo:"Libro1",
+    genero:"thriller",
+    autor:["autor4"],
+    paginas: 200,
+    publicado: a ,
+    leido: false,
+    sitioweb:""
+},{titulo:"Libro1",
+    genero:"fantasia",
+    autor:["autor2","autor3"],
+    paginas: 303,
+    publicado: a ,
+    leido: true,
+    sitioweb:""
+},{titulo:"Libro1",
+    genero:"policiaca",
+    autor:["autor1"],
+    paginas: 304,
+    publicado: a ,
+    leido: false,
+    sitioweb:""
+},{titulo:"Libro1",
+    genero:"horror",
+    autor:["autor3"],
+    paginas: 100,
+    publicado: a ,
+    leido: true,
+    sitioweb:""
+},{titulo:"Libro1",
+    genero:"fantasia",
+    autor:["autor2"],
+    paginas: 305,
+    publicado: a ,
+    leido: true,
+    sitioweb:""
+}]
