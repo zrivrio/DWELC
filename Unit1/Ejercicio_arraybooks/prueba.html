@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Libros</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+        #output {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lista de Libros</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Género</th>
+                <th>Autores</th>
+                <th>Páginas</th>
+                <th>Publicado</th>
+                <th>Leído</th>
+                <th>Sitio Web</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-libros"></tbody>
+    </table>
+
+    <button onclick="mostrarGeneros()">Mostrar Géneros</button>
+    <button onclick="mostrarLibrosLargos()">Mostrar Libros con Más de 300 Páginas</button>
+    <button onclick="mostrarLibrosAntiguos()">Mostrar Libros Publicados Hace Más de 2 Años</button>
+    <button onclick="mostrarAutores()">Mostrar Autores y Cantidad de Libros</button>
+    <button onclick="mostrarLibrosLeidos()">Mostrar Libros Leídos Ordenados por Fecha de Publicación</button>
+
+    <div id="output"></div>
+
+    <script>
+        // Datos JSON de los libros
+        const libros = [
+            {
+                "titulo": "Libro Uno",
+                "genero": "Fantasía",
+                "autores": ["Autor A", "Autor B"],
+                "paginas": 350,
+                "publicado": "2020-01-15",
+                "leido": true,
+                "sitio_web": ""
+            },
+            {
+                "titulo": "Libro Dos",
+                "genero": "Ciencia Ficción",
+                "autores": ["Autor C"],
+                "paginas": 280,
+                "publicado": "2019-05-30",
+                "leido": false,
+                "sitio_web": ""
+            },
+            {
+                "titulo": "Libro Tres",
+                "genero": "Fantasía",
+                "autores": ["Autor A"],
+                "paginas": 450,
+                "publicado": "2021-03-25",
+                "leido": true,
+                "sitio_web": ""
+            },
+            {
+                "titulo": "Libro Cuatro",
+                "genero": "Misterio",
+                "autores": ["Autor D", "Autor E"],
+                "paginas": 500,
+                "publicado": "2018-11-10",
+                "leido": false,
+                "sitio_web": ""
+            },
+            {
+                "titulo": "Libro Cinco",
+                "genero": "Romance",
+                "autores": ["Autor F"],
+                "paginas": 200,
+                "publicado": "2022-02-14",
+                "leido": true,
+                "sitio_web": ""
+            }
+        ];
+
+        // Mostrar los libros en la tabla
+        function mostrarLibrosEnTabla() {
+            const tablaLibros = document.getElementById('tabla-libros');
+            tablaLibros.innerHTML = ''; // Limpiar la tabla existente
+
+            libros.forEach(libro => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td>${libro.titulo}</td>
+                    <td>${libro.genero}</td>
+                    <td>${libro.autores.join(', ')}</td>
+                    <td>${libro.paginas}</td>
+                    <td>${libro.publicado}</td>
+                    <td>${libro.leido ? 'Sí' : 'No'}</td>
+                    <td>${libro.sitio_web || 'N/A'}</td>
+                `;
+                tablaLibros.appendChild(fila);
+            });
+        }
+
+        // Llamar a la función para mostrar los libros al cargar la página
+        mostrarLibrosEnTabla();
+
+        // Mostrar géneros
+        function mostrarGeneros() {
+            const generos = [...new Set(libros.map(libro => libro.genero))];
+            const output = `<strong>Géneros:</strong> ${generos.join(', ')}`;
+            document.getElementById('output').innerHTML = output;
+        }
+
+        // Mostrar libros con más de 300 páginas
+        function mostrarLibrosLargos() {
+            const librosLargos = libros.filter(libro => libro.paginas > 300);
+            const output = librosLargos.length 
+                ? `<strong>Libros con más de 300 páginas:</strong> ${librosLargos.map(libro => `<span class="highlight">${libro.titulo}</span>`).join(', ')}`
+                : "No se encontraron libros con más de 300 páginas.";
+            document.getElementById('output').innerHTML = output;
+        }
+
+        // Mostrar libros publicados hace más de 2 años
+        function mostrarLibrosAntiguos() {
+            const haceDosAnios = new Date();
+            haceDosAnios.setFullYear(haceDosAnios.getFullYear() - 2);
+            const librosAntiguos = libros.filter(libro => new Date(libro.publicado) < haceDosAnios);
+            const output = librosAntiguos.length 
+                ? `<strong>Libros publicados hace más de 2 años:</strong> ${librosAntiguos.map(libro => `<span class="highlight">${libro.titulo}</span>`).join(', ')}`
+                : "No se encontraron libros publicados hace más de 2 años.";
+            document.getElementById('output').innerHTML = output;
+        }
+
+        // Mostrar autores y número de libros que han escrito
+        function mostrarAutores() {
+            const contadorAutores = {};
+            libros.forEach(libro => {
+                libro.autores.forEach(autor => {
+                    if (contadorAutores[autor]) {
+                        contadorAutores[autor]++;
+                    } else {
+                        contadorAutores[autor] = 1;
+                    }
+                });
+            });
+
+            const output = `<strong>Autores y Número de Libros:</strong> ${Object.entries(contadorAutores).map(([autor, cantidad]) => `${autor}: ${cantidad}`).join(', ')}`;
+            document.getElementById('output').innerHTML = output;
+        }
+
+        // Mostrar libros leídos ordenados por fecha de publicación
+        function mostrarLibrosLeidos() {
+            const librosLeidos = libros.filter(libro => libro.leido).sort((a, b) => new Date(a.publicado) - new Date(b.publicado));
+            const output = librosLeidos.length 
+                ? `<strong>Libros Leídos Ordenados por Fecha de Publicación:</strong> ${librosLeidos.map(libro => `<span class="highlight">${libro.titulo}</span>`).join(', ')}`
+                : "No hay libros leídos.";
+            document.getElementById('output').innerHTML = output;
+        }
+    </script>
+
+</body>
+</html>

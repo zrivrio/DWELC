@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Lista de Ejercicios</title>
+</head>
+<body>
+
+    <h1>Libros</h1>
+
+    <table >
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Género</th>
+                <th>Autores</th>
+                <th>Páginas</th>
+                <th>Publicado</th>
+                <th>Leído</th>
+                <th>Sitio Web</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-libros"></tbody>
+    </table>
+
+    <div>
+        <button class="listar_generos">Lista de los generos</button>
+        <button class="titulo_libro_300_pag">Titulo de los libros con mas de 300 paginas</button>
+        <button class="titulo_libro_2_annos">Titulo de los libros con mas de 2 años de publicación</button>
+        <button class="autores_libros">Nombre de los autores y numero de libros que han escrito</button>
+        <button class="libros_leidos">Títulos de los libros leídos, ordenados por fecha de publicación</button>
+    </div>
+
+    <div class="salida"></div>
+</body>
+<script src="lista_libros.js"></script>
+<script src="funciones.js"></script>
+</html>

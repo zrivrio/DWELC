@@ -82,7 +82,7 @@ const libros = [
       {
         title: "La casa de los espíritus",
         genre: "Realismo mágico, Drama",
-        authors: ["Isabel Allende"],
+        authors: ["Isabel Allende", "Carlos Gonzalez"],
         pages: 448,
         published: "1982-11-01",
         read: false,
@@ -91,35 +91,10 @@ const libros = [
       {
         title: "Los detectives salvajes",
         genre: "Novela",
-        authors: ["Roberto Bolaño"],
+        authors: ["Roberto Bolaño", "Carlos Gonzalez"],
         pages: 609,
         published: "1998-11-01",
         read: true,
         website: "https://es.wikipedia.org/wiki/Los_detectives_salvajes"
       }
   ];
-
-//1. Usar forEach para imprimir el título de cada libro
-libros.forEach(libro => {
-   console.log(libro.title);
-});
-
-//2. Usar filter para obtener los libros leídos
-const librosLeidos = libros.filter(libro => libro.read);
-console.log(librosLeidos);
-
-//3. Usar map para crear un array con los títulos de los libros
-const titulos = libros.map(libro => libro.title);
-console.log(titulos);
-
-//4. Usar reduce para contar el total de páginas de todos los libros
-const totalPaginas = libros.reduce((total, libro) => total + libro.pages, 0);
-console.log(`Total de páginas: ${totalPaginas}`);
-
-//5. Usar find para encontrar el primer libro que no haya sido leído
-const libroNoLeido = libros.find(libro => !libro.read);
-console.log(libroNoLeido);
-
-//6. Usar some para verificar si hay al menos un libro que no ha sido leído
-const hayLibrosNoLeidos = libros.some(libro => !libro.read);
-console.log(hayLibrosNoLeidos);  // true o false
