@@ -1,34 +1,26 @@
-const form = document.getElementById('registrationForm');
-const outputDiv = document.getElementById('output');
-const infoList = document.getElementById('infoList');
 
-document.getElementById('submitButton').addEventListener('click', (event) => {
-    event.preventDefault();
-    infoList.innerHTML = '';
-    outputDiv.style.display = 'none';
+  const form = document.getElementById('registroForm');
+  const submitButton = document.getElementById('submitButton');
+  const resultadoDiv = document.getElementById('resultado');
 
-    let valid = true;
-    const inputs = form.querySelectorAll('input, select, textarea');
+  submitButton.addEventListener('click', (event) => {
+    event.preventDefault(); 
 
-    inputs.forEach(input => {
-        // Resetear la clase is-invalid
-        input.classList.remove('is-invalid');
+    const campos = form.querySelectorAll('input, select, textarea');
+    let formularioValido = true;
+    resultadoDiv.innerHTML = ''; 
 
-        if (!input.value && (input.type !== 'checkbox' || !input.checked)) {
-            input.classList.add('is-invalid');
-            valid = false;
-        } else {
-            if (input.type !== 'checkbox' || input.checked) {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${input.type === 'radio' ? input.name : input.id}: ${input.value}`;
-                infoList.appendChild(listItem);
-            }
-        }
+    campos.forEach(campo => {
+      if (!campo.checkValidity()) {
+        campo.classList.add('error'); 
+        formularioValido = false;
+      } else {
+        campo.classList.remove('error');
+        resultadoDiv.innerHTML += `<p><strong>${campo.id || campo.name}:</strong> ${campo.value}</p>`;
+      }
     });
 
-    if (valid) {
-        outputDiv.style.display = 'block';
-    } else {
-        alert('Por favor, complete todos los campos obligatorios.');
+    if (formularioValido) {
+      resultadoDiv.innerHTML = `<h4>Información Registrada:</h4>${resultadoDiv.innerHTML}`;
     }
-});
+  });
