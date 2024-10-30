@@ -1,7 +1,35 @@
+
+//PONER EL NOMBRE EN MAYUSCULAS
 document.querySelector("#name").addEventListener("blur", function(){
     let nombre = document.querySelector("#name");
-   nombre.value = nombre.value.toUpperCase()
+   nombre.value = nombre.value.toUpperCase();
+    mayor7();
+    nombreyapellido();
 })
+
+function mayor7() {
+    let nombre = document.querySelector("#name");
+    let nombrevalor = nombre.value
+    if(nombrevalor.length < 7){
+        alert('Debe de haber 7 caracteres')
+    }
+}
+function nombreyapellido() {
+    let nombre = document.querySelector("#name");
+    let nombrevalor = nombre.value
+    let contador = 0;
+    for (let i = 0; i < nombrevalor.length; i++) {
+        if (nombrevalor.charAt[i].equals(' ')) {
+         contador++;
+     }
+    }
+    if (contador == 0) {
+     alert('debes de poner tu nombre y tu apellido')
+    }
+    
+}
+
+//AÑADIR ESPACIOS A LA TARJETA DE CREDITO
 const contador = 4;
 document.querySelector("#number").addEventListener("keyup", function () {
     
@@ -17,10 +45,48 @@ document.querySelector("#number").addEventListener("keyup", function () {
     }
     numertarjeta.value = tarjetaespacios;
 })
-document.querySelector("#name").addEventListener("blur", function(){
-    document.querySelector("#name").style.backgroundColor= "blue"
-})
 
-document.querySelector("#cantidad").addEventListener("keyup", function() {
-    this.value = this.value.replace(/,/g, '.'); 
+//PONER EL FONDO DE OTRO COLOR CUANDO ESTE EN EL FOCO
+const cajas = document.querySelectorAll(".caja"); 
+
+cajas.forEach(element => {
+    element.addEventListener("focus", function() {
+        element.style.backgroundColor = "Gainsboro";
+    });
+    element.addEventListener("blur", function() {
+        element.style.backgroundColor = "white";
+    });
 });
+
+//REMPLAZAR ',' POR '.' Y AÑADIR '.00'
+document.querySelector("#cantidad").addEventListener("blur", function() {
+    let valorcantidad =  document.querySelector("#cantidad");
+    let valor = valorcantidad.value
+    let nuemroValor = '';
+    nuemroValor = valor.replace(/,/g, '.'); 
+    let numeros = nuemroValor.substring(nuemroValor.length-2);
+    if (!valor.includes('.')) {
+        if(numeros != ".00"){
+            console.log('s');
+            nuemroValor = valor;
+            nuemroValor += ".00";
+        }
+    }
+   
+   
+    valorcantidad.value = nuemroValor;
+});
+
+
+document.querySelector("#date").addEventListener("blur", function () {
+    console.log('ss');
+    const fechaactual = Date.now();
+    console.log(fechaactual);
+    const fechaintroducida = new Date(document.querySelector("#date").value);
+    console.log(fechaintroducida);
+
+    if (fechaintroducida<fechaactual) {
+        alert("La tarjeta esta caducada")
+    }
+    
+})
