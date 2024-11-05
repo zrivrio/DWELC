@@ -19,11 +19,11 @@ function nombreyapellido() {
     let nombrevalor = nombre.value
     let contador = 0;
     for (let i = 0; i < nombrevalor.length; i++) {
-        if (nombrevalor.charAt[i].equals(' ')) {
+        if (nombrevalor.charAt(i) === ' ') {
          contador++;
      }
     }
-    if (contador == 0) {
+    if (contador === 0) {
      alert('debes de poner tu nombre y tu apellido')
     }
     
@@ -72,21 +72,14 @@ document.querySelector("#cantidad").addEventListener("blur", function() {
             nuemroValor += ".00";
         }
     }
-   
-   
     valorcantidad.value = nuemroValor;
 });
 
 
 document.querySelector("#date").addEventListener("blur", function () {
-    console.log('ss');
     const fechaactual = Date.now();
-    console.log(fechaactual);
     const fechaintroducida = new Date(document.querySelector("#date").value);
-    console.log(fechaintroducida);
-
     if (fechaintroducida<fechaactual) {
         alert("La tarjeta esta caducada")
     }
-    
 })
