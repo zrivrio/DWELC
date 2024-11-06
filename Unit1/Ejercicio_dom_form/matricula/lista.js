@@ -1,4 +1,4 @@
-const provincias = [
+const comunidades = [
     {
       "parent_code": "0",
       "label": "Andalucía",
