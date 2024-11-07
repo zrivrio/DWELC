@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="draggable" draggable="true">Arrástrame</div>
+    <div id="dropZone" style="border: 1px solid black; width: 200px; height: 200px; margin-top: 20px;">
+      Suelta aquí
+    </div>
+    <div id="dropZone" style="border: 1px solid black; width: 200px; height: 200px; margin-top: 20px;">
+        Suelta aquí2                    
+      </div>
+    
+    <script>
+      // Elemento arrastrable
+      const draggableElement = document.getElementById("draggable");
+    
+      draggableElement.addEventListener("dragstart", function(event) {
+        event.dataTransfer.setData("text/plain", event.target.id);
+        event.dataTransfer.effectAllowed = "move";
+        event.target.style.opacity = "0.5";
+      });
+    
+      draggableElement.addEventListener("dragend", function(event) {
+        event.target.style.opacity = "1";
+      });
+    
+      // Zona de destino
+      const dropZone = document.getElementById("dropZone");
+    
+      dropZone.addEventListener("dragover", function(event) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "move"; // Visualiza que se moverá
+      });
+    
+      dropZone.addEventListener("drop", function(event) {
+        event.preventDefault();
+        const data = event.dataTransfer.getData("text/plain");
+        const draggedElement = document.getElementById(data);
+        dropZone.appendChild(draggedElement); // Mueve el elemento
+      });
+    </script>          
+</body>
+</html>

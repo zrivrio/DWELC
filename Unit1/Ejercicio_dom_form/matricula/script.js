@@ -40,10 +40,9 @@ document.querySelector("#agregar").addEventListener("click", function() {
 });
 
 //AGREGAR 5 PERSONAS
-let lista = [];  // Lista de personas
-let contador = 1;  // Contador de personas agregadas
+let lista = [];  
+let contador = 1;  
 
-// Función para agregar una persona a la lista
 function agregarPersonas() {
 
     const personaAutorizadaDiv = document.querySelector("#personaAutorizada"); 
@@ -56,12 +55,10 @@ function agregarPersonas() {
     const Tdocumentacion = document.querySelector("#Tdocumentacion").value;
     const Ndocumentacion = document.querySelector("#Ndocumentacion").value;
     const telefono = document.querySelector("#telefono").value;
-
-    // Verifica si todos los campos están completos
     if (nombre.trim() !== "" && PApellido.trim() !== "" && SApellido.trim() !== "" &&
         Tdocumentacion.trim() !== "" && Ndocumentacion.trim() !== "" && telefono.trim() !== "") {
         
-        if (contador < 5) { // Solo se pueden agregar hasta 5 personas
+        if (contador < 5) { 
             const persona = {
                 nombre,
                 PApellido,
@@ -70,11 +67,10 @@ function agregarPersonas() {
                 Ndocumentacion,
                 telefono
             };
-            lista.push(persona);  // Agregar la persona a la lista
-            contador++;  // Incrementar el contador de personas
-            mostrarPersonas();  // Mostrar las personas en el DOM
+            lista.push(persona); 
+            contador++;  
+            mostrarPersonas();  
 
-            // Actualizar el texto de la persona autorizada
         } else {
             alert("Solo se pueden agregar 5 personas.");
         }
@@ -83,12 +79,10 @@ function agregarPersonas() {
     }
 }
 
-// Función para mostrar las personas en el DOM
 function mostrarPersonas() {
     const personaAutorizadaDiv = document.querySelector(".listapersonas");
-    personaAutorizadaDiv.innerHTML = "";  // Limpiar el contenedor de personas
+    personaAutorizadaDiv.innerHTML = "";  
 
-    // Crear el nuevo contenedor para los detalles de las personas
     lista.forEach((persona, index) => {
         const personaDiv = document.createElement("div");
         personaDiv.classList.add("persona");
@@ -106,25 +100,24 @@ function mostrarPersonas() {
     });
 }
 
-// Función para eliminar una persona
+// ELIMINAR PERSONAS
+
 document.querySelector("#quitar").addEventListener("click", function() {
-    const Ndocumentacion = document.querySelector("#Ndocumentacion").value.trim();  // Obtenemos el valor de Ndocumentacion
+    const Ndocumentacion = document.querySelector("#Ndocumentacion").value.trim(); 
     
     if (Ndocumentacion === "") {
         alert("Por favor, ingresa el NIF/NIE/Pasaporte de la persona a eliminar.");
         return;
     }
     
-    // Buscar el índice de la persona por Ndocumentacion
     const index = lista.findIndex(persona => persona.Ndocumentacion === Ndocumentacion);
     
-    if (index !== -1) {  // Si la persona existe en la lista
-        // Eliminar la persona de la lista
+    if (index !== -1) {  
         lista.splice(index, 1);
-        contador--;  // Decrementar el contador
+        contador--;  
         const personaAutorizadaDiv = document.querySelector("#personaAutorizada"); 
         const personaCount = `${contador}º Persona autorizada`; 
-        personaAutorizadaDiv.innerHTML = personaCount;   // Volver a mostrar las personas actualizadas
+        personaAutorizadaDiv.innerHTML = personaCount;  
         mostrarPersonas();
 
         alert("Persona eliminada correctamente.");
@@ -133,6 +126,56 @@ document.querySelector("#quitar").addEventListener("click", function() {
     }
 });
 
-// Asignar la función de agregar persona al evento de clic del botón
 document.querySelector("#agregar").addEventListener("click", agregarPersonas);
+document.querySelector("DOM")
+// PROVINCIAS
+function addComunidad() {
+    const select = document.querySelector("#comunidad");
+    comunidades.forEach(comunidad => {
+        const option = document.createElement("option");
+        option.innerHTML = comunidad.label
+        select.appendChild(option);
+    });
 
+}
+window.onload = addComunidad;
+
+let provincias = [];
+function addProvincias() {
+    const selectcomunidades = document.querySelector("#comunidad");
+    const select = document.querySelector("#provincias");
+
+    comunidades.forEach(comunidad => {
+        if(selectcomunidades.value === comunidad.label){
+            provincias = comunidad.provinces;
+        }
+    })
+    select.innerHTML = "";
+    provincias.forEach(provincia => {
+        const option = document.createElement("option");
+        option.innerHTML = provincia.label
+        select.appendChild(option);
+        
+    })
+    
+}
+document.querySelector("#comunidad").addEventListener("blur",addProvincias);
+
+function addMunicipio() {
+    let municipios = [];
+    const selectprovincias = document.querySelector("#provincias");
+    const select = document.querySelector("#municipios");
+
+    provincias.forEach(provincia => {
+        if(selectprovincias.value === provincia.label){
+            municipios = provincia.towns;
+        }
+    })
+    select.innerHTML = "";
+    municipios.forEach(municipio => {
+        const option = document.createElement("option");
+        option.innerHTML = municipio.label
+        select.appendChild(option);
+    })
+}
+document.querySelector("#provincias").addEventListener("blur",addMunicipio);
