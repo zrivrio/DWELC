@@ -83,3 +83,34 @@ document.querySelector("#date").addEventListener("blur", function () {
         alert("La tarjeta esta caducada")
     }
 })
+
+// const amount = document.querySelector("#amount");
+// const card = document.querySelector("#card");
+// const nombre = document.querySelector("#name");
+// const expiration = document.querySelector("#expiration");
+// const csv = document.querySelector("#csv");
+
+// //VALIDAR CON BOOTSTRAP
+// function validar(valido){
+//     if (!field.checkValidity()) {
+//         field.classList.add("is-invalid");
+//         return false;
+//     } else {
+//         field.classList.remove("is-invalid");
+//         field.classList.add("is-valid");
+//         return true;
+//     }
+// }
+
+// document.querySelector("#btn").addEventListener("click", function(event){
+//     event.preventDefault();
+
+//     let formatoValido = true;
+
+//     formatoValido &= validar(amount);
+//     formatoValido &= validar(card);  
+//     formatoValido &= validar(nombre); 
+//     formatoValido &= validar(expiration);  
+//     formatoValido &= validar(csv);
+  
+// });
