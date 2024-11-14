@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Países y Aerolíneas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Países y Aerolíneas</h1>
+
+        <!-- Select de Continentes -->
+        <div class="form-group">
+            <label for="continentSelect">Seleccionar Continente</label>
+            <select id="continentSelect" class="form-control">
+                <option value="">Seleccione un continente</option>
+            </select>
+        </div>
+
+        <!-- Botones para mostrar información -->
+        <div class="mb-3">
+            <button id="showCountriesBtn" class="btn btn-primary">Mostrar Países</button>
+            <button id="showCompaniesBtn" class="btn btn-info">Mostrar Compañías por País</button>
+            <button id="showAllBtn" class="btn btn-success">Mostrar Países y Compañías</button>
+        </div>
+
+        <!-- Tabla de Países y Compañías -->
+        <table id="tablaPaises" class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>País</th>
+                    <th>Número de Compañías</th>
+                    <th>Compañías</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se insertarán las filas dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+
+  <script src="./lista.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
