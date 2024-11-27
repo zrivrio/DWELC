@@ -1,0 +1,30 @@
+/* Tarjetas de músicos */
+.musicos-card {
+    background-color: white; /* Fondo oscuro */
+    border-radius: 10px;
+    padding: 20px;
+    margin-left: 5px;
+    margin-left: 5px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #2b2b2b; /* Texto claro para buen contraste */
+  }
+  
+  .musicos-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px #fb2484;
+  }
+  
+  /* Títulos en las tarjetas de músicos */
+  .musicos-container h5 {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.8rem;
+    color: #14accc; 
+  }
+  
+  .musicos-container p {
+    color: #b3b3b3; 
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }

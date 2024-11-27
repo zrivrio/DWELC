@@ -1,35 +1,149 @@
-/* Estilo para el fondo del encabezado */
-header {
-    background: linear-gradient(135deg, #3c3b3f, #605c3c);
+  /* ESTILOS GLOBALES */
+  /*BODY*/
+  body {
+    background: linear-gradient(135deg, #0f0f0f, #3b3b3b);
     color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
-  
-  /* Botones principales */
-  .btn-primary {
-    background-color: #0056b3;
+
+  h1,
+  h5 {
+    font-family: 'Anton', sans-serif;
+  }
+
+  .container {
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  /* NOMBRE PAGINA WEB */
+  .nombre-logo {
+    font-size: 4rem;
+    color: black ;
+    text-shadow: 0 0 10px #1174d4, 0 0 20px #1174d4;
+    padding-left: 0.5rem;
+  }
+
+  .nombre-logo:hover {
+    animation: glow 1s infinite alternate;
+    padding-left: 0.5rem;
+  }
+  /*LOGO INICIO*/
+  .img-logo{
+    width: 70px;
+    padding-right: 0.5rem;
+
+  }
+  .lead{
+    color: white;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px #1174d4, 0 0 20px #1174d4, 0 0 30px #1174d4;
+    }
+
+    to {
+      text-shadow: 0 0 20px #1174d4, 0 0 30px #1174d4, 0 0 40px #1174d4;
+    }
+  }
+
+  /* CUADRADOS DE ENTIDADES */
+  .card {
+    background: #2b2b2b;
     border: none;
-    transition: transform 0.2s ease-in-out;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
   }
-  
-  .btn-primary:hover {
-    transform: scale(1.05);
-    background-color: #003f8a;
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px #14accc;
   }
-  
-  .btn-secondary {
-    background-color: #6c757d;
+
+  .card-title {
+    font-size: 1.8rem;
+    color: #fff;
+    margin: 10px 0;
+  }
+
+  .card-text {
+    color: #b3b3b3;
+  }
+
+  /* BOTONES */
+  .btn-custom {
+    background: linear-gradient(90deg, #f47c64, #fb2484);
+    color: #fff;
     border: none;
-    transition: transform 0.2s ease-in-out;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
   }
-  
-  .btn-secondary:hover {
+
+  .btn-custom:hover {
+    background: linear-gradient(90deg, #f47c64, #fb2484);
     transform: scale(1.05);
-    background-color: #565e64;
   }
-  
-  /* Footer */
+
+  /* PIE DE PAGINA */
   footer {
+    margin-top: 50px;
+    text-align: center;
+    padding: 20px;
+    background: #1a1a1a;
+    color: #757575;
     font-size: 0.9rem;
-    background: #2c2c2c;
   }
-  
+
+  footer a {
+    color: #1174d4;
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+/* Estilos para el header */
+
+header .cabecera-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.img-cabecera {
+  width: 45px; /* Ajusta el tamaño según el diseño que necesites */
+  height: auto;
+}
+
+/* Nombre del sitio */
+.nombre-cabecera {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  color: black;
+  text-shadow: 0 0 10px #1174d4, 0 0 20px #1174d4; 
+  margin-left: 10px; 
+}
+.cabecera-container a{
+  text-decoration: none;
+}
+.nombre-cabecera:hover {
+  animation: glow 1s infinite alternate;
+}
+.relaciones-cabecera{
+  color: white;
+}
+.relaciones-cabecera:hover{
+color: #f47c64;
+}
