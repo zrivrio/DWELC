@@ -33,7 +33,7 @@
   }
 
   .album-card img {
-    width: 100%;
+    width: 50%;
     border-radius: 8px;
     margin-top: 10px;
     transition: transform 0.3s ease;

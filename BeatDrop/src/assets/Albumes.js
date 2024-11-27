@@ -10,7 +10,7 @@ const albumes = [
               "canciones": 13,
               "duracion_total": "49:45",
               "genero": "Pop Rock",
-              "imagen_url": "https://example.com/room_for_squares.jpg"
+              "imagen_url": "./../assets/albumes/room_for_squares.jpg"
           },
           {
               "id": 102,
@@ -19,7 +19,7 @@ const albumes = [
               "canciones": 12,
               "duracion_total": "49:22",
               "genero": "Blues Rock",
-              "imagen_url": "https://example.com/continuum.jpg"
+              "imagen_url": "./../assets/albumes/continuum.jpg"
           }
       ]
   },
@@ -34,7 +34,7 @@ const albumes = [
               "canciones": 11,
               "duracion_total": "48:01",
               "genero": "Soul",
-              "imagen_url": "https://example.com/21.jpg"
+              "imagen_url": "./../assets/albumes/21.jpg"
           },
           {
               "id": 202,
@@ -43,7 +43,7 @@ const albumes = [
               "canciones": 11,
               "duracion_total": "45:30",
               "genero": "Soul Pop",
-              "imagen_url": "https://example.com/25.jpg"
+              "imagen_url": "./../assets/albumes/25.jpg"
           }
       ]
   },
@@ -58,7 +58,7 @@ const albumes = [
               "canciones": 12,
               "duracion_total": "68:36",
               "genero": "Hip-Hop",
-              "imagen_url": "https://example.com/good_kid_maad_city.jpg"
+              "imagen_url": "./../assets/albumes/good_kid_m-A-A-d_city.jpg"
           },
           {
               "id": 302,
@@ -67,7 +67,7 @@ const albumes = [
               "canciones": 16,
               "duracion_total": "78:51",
               "genero": "Hip-Hop/Funk",
-              "imagen_url": "https://example.com/to_pimp_a_butterfly.jpg"
+              "imagen_url": "./../assets/albumes/to_pimp_a_butterfly.jpg"
           }
       ]
   },
@@ -82,7 +82,7 @@ const albumes = [
               "canciones": 13,
               "duracion_total": "48:41",
               "genero": "Pop",
-              "imagen_url": "https://example.com/1989.jpg"
+              "imagen_url": "./../assets/albumes/1989.jpg"
           },
           {
               "id": 402,
@@ -91,7 +91,7 @@ const albumes = [
               "canciones": 30,
               "duracion_total": "130:26",
               "genero": "Pop Country",
-              "imagen_url": "https://example.com/red_taylors_version.jpg"
+              "imagen_url": "./../assets/albumes/red.jpg"
           }
       ]
   },
@@ -106,7 +106,7 @@ const albumes = [
               "canciones": 14,
               "duracion_total": "60:00",
               "genero": "House",
-              "imagen_url": "https://example.com/discovery.jpg"
+              "imagen_url": "./../assets/albumes/discovery.jpg"
           },
           {
               "id": 502,
@@ -115,7 +115,7 @@ const albumes = [
               "canciones": 13,
               "duracion_total": "74:24",
               "genero": "Electro-Funk",
-              "imagen_url": "https://example.com/random_access_memories.jpg"
+              "imagen_url": "./../assets/albumes/random_access_memories.jpg"
           }
       ]
   }

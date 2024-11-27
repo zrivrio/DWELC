@@ -7,7 +7,7 @@ const musicos = [
     "anio_debut": 1998,
     "instrumentos": ["Guitarra", "Voz", "Piano"],
     "premios": ["Grammy", "Billboard Music Award"],
-    "imagen_url": "./../assets/",
+    "imagen_url": "./../assets/musicos/jhon_mayer.jpeg",
     "ubicacion": {
       "pais": "Estados Unidos",
       "ciudad": "Bridgeport",
@@ -25,7 +25,7 @@ const musicos = [
     "anio_debut": 2006,
     "instrumentos": ["Voz"],
     "premios": ["Grammy", "Oscar", "Brit Award"],
-    "imagen_url": "https://example.com/adele.jpg",
+    "imagen_url": "./../assets/musicos/adele.png",
     "ubicacion": {
       "pais": "Reino Unido",
       "ciudad": "Londres",
@@ -43,7 +43,7 @@ const musicos = [
     "anio_debut": 2004,
     "instrumentos": ["Voz"],
     "premios": ["Grammy", "Pulitzer Prize"],
-    "imagen_url": "https://example.com/kendrick_lamar.jpg",
+    "imagen_url": "./../assets/musicos/kendrick_lamar.jpg",
     "ubicacion": {
       "pais": "Estados Unidos",
       "ciudad": "Compton",
@@ -61,7 +61,7 @@ const musicos = [
     "anio_debut": 2006,
     "instrumentos": ["Voz", "Guitarra", "Piano"],
     "premios": ["Grammy", "Billboard Music Award", "MTV Video Music Award"],
-    "imagen_url": "https://example.com/taylor_swift.jpg",
+    "imagen_url": "./../assets/musicos/taylor_swift.png",
     "ubicacion": {
       "pais": "Estados Unidos",
       "ciudad": "Reading",
@@ -69,7 +69,8 @@ const musicos = [
         "latitud": 40.3356,
         "longitud": -75.9269
       }
-    }
+    },
+    "retirado": false,
   },
   {
     "id": 5,
@@ -79,7 +80,7 @@ const musicos = [
     "anio_debut": 1993,
     "instrumentos": ["Sintetizadores", "Drum Machines"],
     "premios": ["Grammy"],
-    "imagen_url": "https://example.com/daft_punk.jpg",
+    "imagen_url": "./../assets/musicos/daft_punk.jpg",
     "ubicacion": {
       "pais": "Francia",
       "ciudad": "París",
