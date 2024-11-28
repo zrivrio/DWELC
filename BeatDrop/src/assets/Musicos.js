@@ -7,6 +7,7 @@ const musicos = [
     "anio_debut": 1998,
     "instrumentos": ["Guitarra", "Voz", "Piano"],
     "premios": ["Grammy", "Billboard Music Award"],
+    "retirado": false,
     "imagen_url": "./../assets/musicos/jhon_mayer.jpeg",
     "ubicacion": {
       "pais": "Estados Unidos",
@@ -15,7 +16,7 @@ const musicos = [
         "latitud": 41.1865,
         "longitud": -73.1952
       }
-    }
+    },
   },
   {
     "id": 2,
@@ -25,6 +26,7 @@ const musicos = [
     "anio_debut": 2006,
     "instrumentos": ["Voz"],
     "premios": ["Grammy", "Oscar", "Brit Award"],
+    "retirado": false,
     "imagen_url": "./../assets/musicos/adele.png",
     "ubicacion": {
       "pais": "Reino Unido",
@@ -33,7 +35,7 @@ const musicos = [
         "latitud": 51.5074,
         "longitud": -0.1278
       }
-    }
+    },
   },
   {
     "id": 3,
@@ -43,6 +45,7 @@ const musicos = [
     "anio_debut": 2004,
     "instrumentos": ["Voz"],
     "premios": ["Grammy", "Pulitzer Prize"],
+    "retirado": false,
     "imagen_url": "./../assets/musicos/kendrick_lamar.jpg",
     "ubicacion": {
       "pais": "Estados Unidos",
@@ -51,7 +54,7 @@ const musicos = [
         "latitud": 33.8958,
         "longitud": -118.2201
       }
-    }
+    },
   },
   {
     "id": 4,
@@ -61,6 +64,7 @@ const musicos = [
     "anio_debut": 2006,
     "instrumentos": ["Voz", "Guitarra", "Piano"],
     "premios": ["Grammy", "Billboard Music Award", "MTV Video Music Award"],
+    "retirado": false,
     "imagen_url": "./../assets/musicos/taylor_swift.png",
     "ubicacion": {
       "pais": "Estados Unidos",
@@ -70,7 +74,6 @@ const musicos = [
         "longitud": -75.9269
       }
     },
-    "retirado": false,
   },
   {
     "id": 5,
@@ -80,6 +83,7 @@ const musicos = [
     "anio_debut": 1993,
     "instrumentos": ["Sintetizadores", "Drum Machines"],
     "premios": ["Grammy"],
+    "retirado": true,
     "imagen_url": "./../assets/musicos/daft_punk.jpg",
     "ubicacion": {
       "pais": "Francia",
@@ -88,6 +92,6 @@ const musicos = [
         "latitud": 48.8566,
         "longitud": 2.3522
       }
-    }
+    },
   }
-]
+];

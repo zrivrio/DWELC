@@ -1,12 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>BEATDROP</title>
+    <link rel="stylesheet" href="./Musicos.css">
+    <link rel="stylesheet" href="./../css/main.css">
+    <title>BEATDROP - Agreagar Músicos</title>
 </head>
+
 <body>
-    
+    <header>
+        <div class="cabecera-container">
+            <a class="d-flex align-items-center justify-content-start" href="./../index.html">
+                <img class="img-cabecera" src="./../assets/logo/logo.png" alt="Logo de BeatDrop">
+                <h1 class="nombre-cabecera ms-2">BeatDrop</h1>
+            </a>
+            <div class="mt-3 d-flex align-items-center justify-content-start">
+                <a class="p-2 relaciones-cabecera" href="./../Albumes/listaAlbumes.html">ALBUMES</a>
+                <a class="p-2 relaciones-cabecera" href="./../Musicos/listaMusicos.html">MUSICOS</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container my-4">
+        <h1>Agregar Músico Nuevo</h1>
+        <form id="musicos-form">
+            <div class="mb-4">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+            </div>
+            <div class="mb-4">
+                <label for="genero">Genero</label>
+                <input type="number" class="form-control" id="genero" placeholder="Genero" required>
+            </div>
+            <div class="mb-4">
+                <label for="nacionalidad">Nacionalidad</label>
+                <input type="number" class="form-control" id="nacionalidad" placeholder="Nacionalidad" required>
+            </div>
+            <div class="mb-4">
+                <label for="anio_debut">Año del debut</label>
+                <input type="text" class="form-control" id="anio_debut" placeholder="Género del álbum" required>
+            </div>
+            <div class="mb-4">
+                <label for="instrumentos">Instrumentos</label>
+                <input type="text" class="form-control" id="instrumentos" placeholder="Instrumentos musicales" required>
+            </div>
+            <div class="mb-4">
+                <label for="premios">Premios</label>
+                <input type="text" class="form-control" id="premios" placeholder="Premios Ganados" required>
+            </div>
+            <div class="mb-4">
+                <label for="retirado">Retirado</label>
+                <input type="checkbox" class="form-control" id="retirado">
+            </div>
+            <div class="mb-4">
+                <label for="pais">País</label>
+                <input type="text" class="form-control" id="pais" placeholder="País" required>
+            </div>
+            <div class="mb-4">
+                <label for="ciudad">Ciudad</label>
+                <input type="text" class="form-control" id="ciudad" placeholder="Ciudad" required>
+            </div>
+            <div class="mb-4">
+                <label for="imagen_url" class="form-label">Imagen del álbum</label>
+                <input type="file" class="form-control-file" id="imagen_url">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Agreagr Músico</button>
+        </form>
+    </div>
+
+    <footer class="d-flex align-items-center justify-content-center">
+        <p>&copy; 2024 BeatDrop. Diseñado para los amantes de la música. <a href="#">Política de privacidad</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./../assets/Musicos.js"></script>
+    <script src="./Musicos.js"></script>
+    <script src="./MusicosController.js"></script>
 </body>
+
 </html>

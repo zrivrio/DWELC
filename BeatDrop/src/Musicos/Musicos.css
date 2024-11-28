@@ -1,35 +1,93 @@
-/* Tarjetas de músicos */
 .musicos-card {
-    background-color: white; /* Fondo oscuro */
-    border-radius: 10px;
-    padding: 20px;
-    margin-left: 5px;
-    margin-left: 5px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .musicos-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px #fb2484;
-  }
-  
-  /* Títulos en las tarjetas de músicos */
-  .musicos-container h5 {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.8rem;
-    color: #14accc; 
-  }
-  
-  .musicos-container p {
-    color: #2b2b2b;
-    font-size: 0.95rem;
-    margin-bottom: 10px;
-  }
-  .card-img-top{
-    width: 50%;
-    border-radius: 8px;
-    margin-top: 10px;
-    transition: transform 0.3s ease;
-  }
+  background-color: white;
+  /* Fondo oscuro */
+  border-radius: 10px;
+  padding: 20px;
+  margin-left: 5px;
+  margin-left: 5px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.musicos-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px #fb2484;
+}
+
+.musicos-container h5 {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.8rem;
+  color: #14accc;
+}
+
+.musicos-container p {
+  color: #2b2b2b;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.card-img-top {
+  width: 50%;
+  border-radius: 8px;
+  margin-top: 10px;
+  transition: transform 0.3s ease;
+}
+
+#musicos-form {
+  background-color: #3b3b3b;
+  border-radius: 12px;
+  padding: 35px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#musicos-form label {
+  font-weight: bold;
+  color: #1174d4;
+  font-size: 1.1rem;
+  margin-bottom: 0px;
+}
+
+#musicos-form input,
+#musicos-form select {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #757575;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+#musicos-form button {
+  background: linear-gradient(90deg, #1174d4, #53e2ff);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  width: 100%;
+  transition: background 0.4s, transform 0.2s;
+}
+
+#musicos-form button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #53e2ff, #1174d4);
+  cursor: pointer;
+}
+
+#musicos-form .mb-3 {
+  margin-bottom: 25px;
+}
+
+#musicos-form input,
+#musicos-form select {
+  font-size: 1.1rem;
+  padding: 14px;
+}
