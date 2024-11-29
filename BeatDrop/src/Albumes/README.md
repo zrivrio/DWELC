@@ -13,8 +13,8 @@ Gestiona que se puedan ver todos los albunes en `listaralbunes.html` ademas de q
 #### **a. `listarAlbumes.html`**
 Pagína en donde se muestran todos los albumes dinamicamente.
 
-#### **b. `crearmusicos.html`**
+#### **b. `crearAlbumes.html`**
 Formulario dedicado a la creación de nuevos álbumes.
 
-#### **c. `editarmusicos.html`**
+#### **c. `editarAlbumes.html`**
 Página para editar álbumes existentes.
