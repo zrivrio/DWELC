@@ -35,39 +35,38 @@ function mostrarAcordeon() {
         comunidadItem.classList.add("accordion-item");
 
         comunidadItem.innerHTML = `
-        <h2 class="accordion-header" id="comunidad-${comunidad.code}">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${comunidad.code}" aria-expanded="true" aria-controls="collapse-${comunidad.code}">
-                ${comunidad.label} (${comunidad.provinces.length} Provincias)
-            </button>
-        </h2>
-        <div id="collapse-${comunidad.code}" class="accordion-collapse collapse" aria-labelledby="comunidad-${comunidad.code}" data-bs-parent="#accordion">
-            <div class="accordion-body">
-                <ul class="list-group">
-                    ${ordenProvincias.map(provincia => `
-                        <li class="list-group-item">
-                            <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#provincia-${provincia.code}">
-                            ${provincia.label} (${provincia.towns.length} Ciudades)
-                            </button> 
-                            <div id="provincia-${provincia.code}" class="collapse">
-                                <ul class="list-group">
-                                    ${provincia.towns.map(ciudad => `<li class="list-group-item">${ciudad.label}</li>`).join('')}
-                                </ul>
-                            </div>
-                        </li>
-                    `).join('')}
-                </ul>
-            </div>
-        </div>
-        `;
+                    <h2 class="accordion-header" id="heading-${comunidad.code}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${comunidad.code}" aria-expanded="false" aria-controls="collapse-${comunidad.code}">
+                            ${comunidad.label} (${comunidad.provinces.length} Provincias)
+                        </button>
+                    </h2>
+                    <div id="collapse-${comunidad.code}" class="accordion-collapse collapse" aria-labelledby="heading-${comunidad.code}" data-bs-parent="#accordion">
+                        <div class="accordion-body">
+                            <ul class="list-group">
+                                ${ordenProvincias.map(provincia => `
+                                    <li class="list-group-item">
+                                        <button class="btn btn-link text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#provincia-${provincia.code}">
+                                            ${provincia.label} (${provincia.towns.length} Ciudades)
+                                        </button>
+                                        <div id="provincia-${provincia.code}" class="collapse">
+                                            <ul class="list-group mt-2">
+                                                ${provincia.towns.map(ciudad => `<li class="list-group-item">${ciudad.label}</li>`).join('')}
+                                            </ul>
+                                        </div>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
         acordeonContainer.appendChild(comunidadItem);
     });
 }
 
-// Function to update the accordion when values change
-function actualizarAcordeon() {
-    mostrarAcordeon();
-}
+window.onload = mostrarAcordeon();
 
 // Add event listeners correctly to update the accordion on blur
-document.querySelector("#ordenarModo").addEventListener("blur", actualizarAcordeon);
-document.querySelector("#ordenarOrden").addEventListener("blur", actualizarAcordeon);
+document.querySelector("#ordenarModo").addEventListener("change", mostrarAcordeon);
+document.querySelector("#ordenarOrden").addEventListener("blur", mostrarAcordeon);
+
+
