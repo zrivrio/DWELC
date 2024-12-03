@@ -15,3 +15,14 @@ console.log(list);
 console.log(list2);
 console.log(list3);
 
+
+
+//Explicacion 
+
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+// Filtra palabras con más de 6 caracteres
+const result = words.filter((word) => word.length > 6);
+
+console.log(result);
+// Salida esperada: ["exuberant", "destruction", "present"]
