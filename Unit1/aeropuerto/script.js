@@ -79,7 +79,7 @@ function companiesPais() {
         companiesCountCell.textContent = country.companies.length;
 
         const companiesNamesCell = row.insertCell(2);
-        const airlinesNames = country.companies.map(airline => airline.name).join(", ");
+        const airlinesNames = country.companies.map(airlineObj => Object.keys(airlineObj)[0]).join(", ");
         companiesNamesCell.textContent = airlinesNames;
     });
 }
