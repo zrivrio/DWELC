@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>ADVANCED SEARCH</title>
+</head>
+
+<body>
+    <h3>ZAHIRA RIVAS RIOS</h3>
+    <form class="border border-1 border-dark">
+
+        <p><b>ADVANCED SEARCH </b>(in all selected fields)</p>
+
+        <div>
+            <label for="Busqueda">Text:</label>
+            <div class="pb-1">
+                <input type="search" name="Busqueda" id="Busqueda">
+            </div>
+            <div class="d-flex">
+                <div>
+                    <input type="checkbox" name="TitleCheck" id="TitleCheck">
+                    <label for="TitleCheck">Title</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="DirectorCheck" id="DirectorChek">
+                    <label for="DirectorCheck">Director</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="ActorsCheck" id="ActorsCheck">
+                    <label for="ActorsCheck">Actors</label>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label for="CountySelect">Country:</label>
+            <div>
+                <select name="CountySelect" id="CountySelect">
+                    <option value="allCountry">All countries</option>
+                </select>
+            </div>
+        </div>
+
+        <div>
+            <label for="ContainerGenders">Gender:</label>
+            <div class="d-flex ContainerGenders justify-space-between">
+                <div class="p-2">
+                    <input type="checkbox" name="AllCheck" id="AllCheck">
+                    <label for="AllCheck">All genders</label>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="d-flex">
+            <label for="yearSelect1">Year:</label>
+            <p class="p-0 m-0">from</p>
+            <select name="yearSelect1" id="yearSelect1">
+                <option value="">----</option>
+            </select>
+            <p class="p-0 m-0">to</p>
+            <select name="yearSelect2" id="yearSelect2">
+                <option value="">----</option>
+            </select>
+        </div>
+
+        <input type="submit" id="find" value="Find">
+
+    </form>
+
+    <p class="nResults"></p>
+
+    <div class="results">
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+        <script src="./filtrospelis.js"></script>
+        <script src="./pelisList.js"></script>
+        <script src="./script.js"></script>
+
+</body>
+
+</html>
