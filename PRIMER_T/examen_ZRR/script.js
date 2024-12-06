@@ -3,13 +3,39 @@
 function MostrarPaises() {
     const CountySelect = document.querySelector("#CountySelect");
 
-    countries.forEach(country => {
-        const CountyOption = document.createElement("option");
-        CountyOption.innerHTML = country;
-        CountyOption.value = country;
-        CountySelect.appendChild(CountyOption);
-    });
+    annadirOptions(CountySelect, countries);
 
+}
+
+// Función para mostrar los años
+function MostrarAnno() {
+    const yearSelect1 = document.querySelector("#yearSelect1");
+    const yearSelect2 = document.querySelector("#yearSelect2");
+
+    const yearList = generarAnno(2000, new Date().getFullYear());  
+
+    annadirOptions(yearSelect1, yearList);  
+    annadirOptions(yearSelect2, yearList); 
+}
+
+
+// Función para agregar opciones a un select
+function annadirOptions(selectElement, options) {
+    options.forEach(option => {
+        const optionElement = document.createElement("option");
+        optionElement.innerHTML = option;
+        optionElement.value = option;
+        selectElement.appendChild(optionElement);
+    });
+}
+
+// Función para generar los años entre dos fechas
+function generarAnno(yearStart, yearEnd) {
+    let yearList = [];
+    for (let year = yearStart; year <= yearEnd; year++) {
+        yearList.push(year);
+    }
+    return yearList;
 }
 
 //Mostrar los generos
@@ -30,34 +56,7 @@ function MostrarGeneros() {
 
 }
 
-//Mostrar los años
-function MostrarAnno() {
-    const yearSelect1 = document.querySelector("#yearSelect1");
-    const yearSelect2 = document.querySelector("#yearSelect2");
 
-    let year2020 = new Date();
-    year2020.setFullYear(2020);
-
-    let yearNow = new Date();
-
-    let ListaAnno = [];
-
-    for (let fecha = new Date(year2020); fecha.getFullYear() <= yearNow.getFullYear(); fecha.setFullYear(fecha.getFullYear() + 1)) {
-        ListaAnno.push(new Date(fecha));
-    }
-
-    ListaAnno.forEach(anno => {
-        const annoOption1 = document.createElement("option");
-        annoOption1.innerHTML = anno.getFullYear();
-        annoOption1.value = anno.getFullYear();
-        const annoOption2 = document.createElement("option");
-        annoOption2.innerHTML = anno.getFullYear();
-        annoOption2.value = anno.getFullYear();
-
-        yearSelect1.appendChild(annoOption1);
-        yearSelect2.appendChild(annoOption2);
-    });
-}
 
 function MostrarResults() {
     const nResults = document.querySelector(".nResults");
@@ -81,14 +80,14 @@ function MostrarPelicuas() {
         const listaGeneros = pelicula.Genre.split(",");
         listaGeneros.forEach(genero => {
             const generoP = document.createElement("p");
-            generoP.classList.add("p-2");
+            generoP.classList.add("p-2", "mr-3", "border", "rounded-pill", "bg-primary");
             generoP.textContent = genero.trim();
             generosContainer.appendChild(generoP);
         });
 
         peliculaDiv.innerHTML = `
             <h2>${pelicula.Title}</h2>
-            <div class="d-flex">
+            <div class="card">
                 <img src="${pelicula.Images[0]}" class="img-thumbnail w-2" alt="imagen de la pelicula">
                 <button class="details border border-1 border-dark">Details</button>
             </div>
@@ -96,19 +95,53 @@ function MostrarPelicuas() {
 
         const preDiv = document.createElement("div");
         preDiv.innerHTML = `
-        <input type="text" name="ranking" id="ranking">
-        <input type="submit" name="cambio" id="cambio">
-        <pre> ${JSON.stringify(pelicula, null, 2)}</pre>`;
+            <input type="submit" name="cerrar" class="cerrar" value="X">
+            <div>
+                <input type="text" name="ranking" id="ranking">
+                <input type="submit" name="cambio" id="cambio" value="Change">
+            </div>
+            <pre> ${JSON.stringify(pelicula, null, 2)}</pre>
+            <div id="update-history"></div>
+        `;
 
         const detailsButton = peliculaDiv.querySelector(".details");
         detailsButton.addEventListener("click", function () {
-            peliculaDiv.appendChild(preDiv);
+            peliculaDiv.classList.add("bg-secondary")
+            if (!peliculaDiv.contains(preDiv)) {
+                peliculaDiv.appendChild(preDiv);
+
+                const cerrarButtom = preDiv.querySelector(".cerrar");
+                cerrarButtom.addEventListener("click", function () {
+                peliculaDiv.classList.remove("bg-secondary")
+                    peliculaDiv.removeChild(preDiv);
+                });
+            }
+        });
+
+        const rankingInput = preDiv.querySelector("#ranking");
+        const cambioButton = preDiv.querySelector("#cambio");
+        const updateHistory = preDiv.querySelector("#update-history");
+
+        cambioButton.addEventListener("click", function () {
+            const updateRanking = parseFloat(rankingInput.value);
+
+            if (!isNaN(updateRanking) && updateRanking >= 0 && updateRanking <= 10) {
+                pelicula.imdbRating = updateRanking.toString();  
+                const fecha = new Date();
+                const pUpdate = document.createElement("p");
+
+                pUpdate.innerHTML = `"update": "${fecha.toLocaleString()}"`
+                updateHistory.appendChild(pUpdate);
+
+                preDiv.querySelector("pre").textContent = JSON.stringify(pelicula, null, 2);
+            }
         });
 
         peliculaDiv.appendChild(generosContainer);
         ResultsDiv.appendChild(peliculaDiv);
     });
 }
+
 
 
 
@@ -144,10 +177,10 @@ function filterMovies() {
             match = Title;
         }
         if (directorCheck.checked && pelicula.Director.toLowerCase().includes(busqueda)) {
-            match = Title;
+            match = Director;
         }
         if (actorsCheck.checked && pelicula.Actors.some(actor => actor.toLowerCase().includes(busqueda))) {
-            match = Director;
+            match = Actors;
         }
         if (!titleCheck.checked && !directorCheck.checked && !actorsCheck.checked) {
             match = "";
@@ -156,7 +189,6 @@ function filterMovies() {
         return match;
     });
 }
-
 
 
 function OnloadPage() {
