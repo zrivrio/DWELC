@@ -89,7 +89,8 @@ function filtrarPorGeneros(pelicula, selectedGeneros) {
     return selectedGeneros.length === 0 || selectedGeneros.some(g => pelicula.Genre.split(",").map(g => g.trim()).includes(g));
 }
 
-// Mostrar los resultados filtrados
+//mostrar los resultados filtrados 
+
 function mostrarResultados(peliculasFiltradas) {
     const ResultsDiv = document.querySelector(".results");
     ResultsDiv.innerHTML = ''; // Limpiar resultados previos
@@ -186,21 +187,8 @@ peliculaDiv.innerHTML = `
     return peliculaDiv;
 }
 
-
-// Configuración de eventos al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector("#AllCheck").addEventListener("click", MarcarCheck);
-    document.querySelector("#find").addEventListener("click", filtrarPeliculas); 
-
-    MostrarPaises();
-    MostrarGeneros();
-    MostrarAnno();
-    MostrarResults();
-    MostrarPelicuas();
-});
-
 // Función para marcar todos los géneros
-function MarcarCheck() {
+function marcarCheck() {
     const allGenresCheckbox = document.querySelector("#AllCheck");
     const genreCheckboxes = [...document.querySelectorAll(".genre-checkbox")]; 
 
@@ -222,13 +210,13 @@ function MarcarCheck() {
 }
 
 // Función para mostrar los países
-function MostrarPaises() {
+function mostrarPaises() {
     const CountySelect = document.querySelector("#CountySelect");
     annadirOptions(CountySelect, countries);
 }
 
 // Función para mostrar los años
-function MostrarAnno() {
+function mostrarAnno() {
     const yearSelect1 = document.querySelector("#yearSelect1");
     const yearSelect2 = document.querySelector("#yearSelect2");
     const yearList = generarAnno(2000, new Date().getFullYear());
@@ -236,19 +224,19 @@ function MostrarAnno() {
     annadirOptions(yearSelect2, yearList);
 }
 
-function MostrarGeneros() {
+function mostrarGeneros() {
     const ContainerGenders = document.querySelector(".ContainerGenders");
     genders.sort((a, b) => a.localeCompare(b));
     genders.forEach(gender => {
         const genderDiv = document.createElement("div");
         genderDiv.classList.add("form-check", "p-2");
-        genderDiv.innerHTML = `
+        genderDiv.innerHTmL = `
             <input type="checkbox" class="form-check-input genre-checkbox" id="${gender}Check">
             <label class="form-check-label" for="${gender}Check">${gender}</label>
         `;
         ContainerGenders.appendChild(genderDiv);
     });
-    MarcarCheck();
+    marcarCheck();
 }
 
 // Función para añadir opciones a un select
@@ -269,3 +257,16 @@ function generarAnno(yearStart, yearEnd) {
     }
     return yearList;
 }
+
+// Configuración de eventos al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector("#AllCheck").addEventListener("click", marcarCheck);
+    document.querySelector("#find").addEventListener("click", filtrarPeliculas); 
+
+    mostrarPaises();
+    mostrarGeneros();
+    mostrarAnno();
+    mostrarResultados();
+    mostrarPelicuas();
+});
+
