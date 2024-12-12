@@ -10,82 +10,87 @@
 </head>
 
 <body>
-    <h3>ZAHIRA RIVAS RIOS</h3>
-    <form class="border border-1 border-dark">
+    <div class="container my-4">
+        <h3 class="text-center mb-4">ZAHIRA RIVAS RIOS</h3>
 
-        <p><b>ADVANCED SEARCH </b>(in all selected fields)</p>
+        <form class="border border-1 border-dark rounded p-4">
+            <p class="mb-3"><b>ADVANCED SEARCH</b> (in all selected fields)</p>
 
-        <div>
-            <label for="Busqueda">Text:</label>
-            <div class="pb-1">
-                <input type="search" name="Busqueda" id="Busqueda">
+            <!-- Input de búsqueda -->
+            <div class="mb-3">
+                <label for="Busqueda" class="form-label">Text:</label>
+                <input type="search" name="Busqueda" id="Busqueda" class="form-control">
             </div>
-            <div class="d-flex">
-                <div>
-                    <input type="checkbox" name="TitleCheck" id="TitleCheck">
-                    <label for="TitleCheck">Title</label>
+
+            <!-- Filtros de búsqueda -->
+            <div class="d-flex mb-3">
+                <div class="form-check me-3">
+                    <input type="checkbox" name="TitleCheck" id="TitleCheck" class="form-check-input">
+                    <label for="TitleCheck" class="form-check-label">Title</label>
                 </div>
-                <div>
-                    <input type="checkbox" name="DirectorCheck" id="DirectorChek">
-                    <label for="DirectorCheck">Director</label>
+                <div class="form-check me-3">
+                    <input type="checkbox" name="DirectorCheck" id="DirectorChek" class="form-check-input">
+                    <label for="DirectorCheck" class="form-check-label">Director</label>
                 </div>
-                <div>
-                    <input type="checkbox" name="ActorsCheck" id="ActorsCheck">
-                    <label for="ActorsCheck">Actors</label>
+                <div class="form-check">
+                    <input type="checkbox" name="ActorsCheck" id="ActorsCheck" class="form-check-input">
+                    <label for="ActorsCheck" class="form-check-label">Actors</label>
                 </div>
             </div>
-        </div>
-        <div>
-            <label for="CountySelect">Country:</label>
-            <div>
-                <select name="CountySelect" id="CountySelect">
+
+            <!-- Selector de país -->
+            <div class="mb-3">
+                <label for="CountySelect" class="form-label">Country:</label>
+                <select name="CountySelect" id="CountySelect" class="form-select">
                     <option value="allCountry">All countries</option>
                 </select>
             </div>
-        </div>
 
-        <div>
-            <label for="ContainerGenders">Gender:</label>
-            <div class="d-flex ContainerGenders justify-space-between">
-                <div class="p-2">
-                    <input type="checkbox" name="AllCheck" id="AllCheck">
-                    <label for="AllCheck">All genders</label>
+            <!-- Selector de géneros -->
+            <div class="mb-3">
+                <label for="ContainerGenders" class="form-label">Gender:</label>
+                <div class="d-flex ContainerGenders justify-content-between">
+                    <div class="form-check p-2">
+                        <input type="checkbox" name="AllCheck" id="AllCheck" class="form-check-input">
+                        <label for="AllCheck" class="form-check-label">All genders</label>
+                    </div>
                 </div>
             </div>
-        </div>
 
+            <!-- Selector de años -->
+            <div class="d-flex mb-3">
+                <label for="yearSelect1" class="form-label me-2">Year:</label>
+                <p class="p-0 m-0 me-2">from</p>
+                <select name="yearSelect1" id="yearSelect1" class="form-select me-2" style="width: auto;">
+                    <option value="">----</option>
+                </select>
+                <p class="p-0 m-0 me-2">to</p>
+                <select name="yearSelect2" id="yearSelect2" class="form-select me-2" style="width: auto;">
+                    <option value="">----</option>
+                </select>
+            </div>
 
-        <div class="d-flex">
-            <label for="yearSelect1">Year:</label>
-            <p class="p-0 m-0">from</p>
-            <select name="yearSelect1" id="yearSelect1">
-                <option value="">----</option>
-            </select>
-            <p class="p-0 m-0">to</p>
-            <select name="yearSelect2" id="yearSelect2">
-                <option value="">----</option>
-            </select>
-        </div>
+            <!-- Botón para realizar la búsqueda -->
+            <button type="button" id="find" class="btn btn-primary w-100">Find</button>
+        </form>
 
-        <input type="submit" id="find" value="Find">
-
-    </form>
-
-    <p class="nResults"></p>
+        <!-- Mostrar los resultados -->
+        <p class="nResults mt-3"></p>
 
         <div class="container my-4">
             <div class="row row-cols-1 row-cols-md-3 g-4 results">
                 <!-- Aquí se agregarán dinámicamente las tarjetas de película -->
             </div>
         </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-        <script src="./filtrospelis.js"></script>
-        <script src="./pelisList.js"></script>
-        <script src="./script.js"></script>
+    <script src="./filtrospelis.js"></script>
+    <script src="./pelisList.js"></script>
+    <script src="./script.js"></script>
 
 </body>
 
