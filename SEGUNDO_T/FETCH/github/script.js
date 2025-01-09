@@ -1,86 +1,82 @@
-
 document.querySelector("#buscar").addEventListener("click", (event) => {
     event.preventDefault();
-    const texto = document.querySelector("#nombre");
+
+    const texto = document.querySelector("#nombre").value.trim();
     const result = document.querySelector("#result");
-    const url = `https://api.github.com/users/${texto.value}`;
+
+    const url = `https://api.github.com/users/${texto}`;
+
     fetch(url)
         .then((response) => {
-            console.log(response);
             if (!response.ok) {
                 return response.json().then(err => {
-                    throw new Error('Error:' + err.error.message);
-                })
-            } else {
-                return response.json();
+                    throw new Error(err.message);
+                });
             }
+            return response.json();
         })
         .then((data) => {
-            console.log(data);
             result.innerHTML = `
-            <p>Fecha de Creacion: ${data.created_at} </p>
-            <p>Seguidores: ${data.followers} </p>
-            <p id="listaSeguidores"></p>
-             <p>Seguidos: ${data.following} </p>
-            <p id="listaSeguidos"></p>
+                <p>Fecha de Creación: ${new Date(data.created_at).toLocaleDateString()}</p>
+                <p>Seguidores: ${data.followers}</p>
+                <div id="listaSeguidores"></div>
+
+                <p>Seguidos: ${data.following}</p>
+                <div id="listaSeguidos"></div>
             `;
-            const followersList =  `https://api.github.com/users/${texto.value}/followers`
-           const followingList =  `https://api.github.com/users/${texto.value}/following`
-            fetch(followersList)
-           .then((responseFollower) => {
-            console.log(responseFollower);
-            if (!responseFollower.ok) {
-                return responseFollower.json().then(err => {
-                    throw new Error('Error:' + err.error.message);
-                })
-            } else {
-                return responseFollower.json();
-            }
-            })
-            .then ((dataFollower) =>{
-            console.log(dataFollower)
-             const listaSeguidores = document.querySelector("#listaSeguidores");
-             dataFollower.forEach(f => {
-                listaSeguidores.innerHTML = `
-                <p>Nombre:${f.login} Fecha de creacion: ${f.created_at} </p>
-                `;
-                });
-            })
-            .catch((error) => {
-                result.innerHTML = `
-                <p>${error.message}</p>
-                `;
-            })
-            fetch(followingList)
-            .then((responseFollowing) => {
-             console.log(responseFollowing);
-             if (!responseFollowing.ok) {
-                 return responseFollowing.json().then(err => {
-                     throw new Error('Error:' + err.error.message);
-                 })
-             } else {
-                 return responseFollowing.json();
-             }
-             })
-             .then ((dataFollowing) =>{
-             console.log(dataFollowing)
-              const listaSeguidos = document.querySelector("#listaSeguidos");
-              dataFollowing.forEach(f => {
-                 listaSeguidos.innerHTML = `
-                 <p>Nombre:${f.login} Fecha de creacion: ${f.created_at} </p>
-                 `;
-                 });
-             })
-             .catch((error) => {
-                 result.innerHTML = `
-                 <p>${error.message}</p>
-                 `;
-             })
+
+            fetchDatosUsuarios(`https://api.github.com/users/${texto}/followers`, "#listaSeguidores", "Seguidores");
+            fetchDatosUsuarios(`https://api.github.com/users/${texto}/following`, "#listaSeguidos", "Seguidos");
         })
         .catch((error) => {
-            result.innerHTML = `
-            <p>${error.message}</p>
-            `;
-        })
+            result.innerHTML = `<p>Error: ${error.message}</p>`;
+        });
+});
 
-})
+function fetchDatosUsuarios(url, idDiv, tipo) {
+    fetch(url)
+        .then((response) => {
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(err.message);
+                });
+            }
+            return response.json();
+        })
+        .then((data) => {
+            const div = document.querySelector(idDiv);
+            if (!data.length) {
+                div.innerHTML = `<p>No se encontraron ${tipo.toLowerCase()}.</p>`;
+                return;
+            }
+
+            const detallesPromises = data.map(u =>
+                fetch(u.url)
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error(`Error al obtener detalles del usuario ${u.login}`);
+                        }
+                        return response.json();
+                    })
+            );
+
+            Promise.all(detallesPromises)
+                .then((usuarios) => {
+                    const html = usuarios.map(usuario => `
+                        <p>
+                            Nombre: ${usuario.login}<br>
+                            Fecha de Creación: ${new Date(usuario.created_at).toLocaleDateString()}
+                        </p>
+                    `).join("");
+
+                    div.innerHTML = html;
+                })
+                .catch((error) => {
+                    div.innerHTML = `<p>Error: ${error.message}</p>`;
+                });
+        })
+        .catch((error) => {
+            const div = document.querySelector(idDiv);
+            div.innerHTML = `<p>Error: ${error.message}</p>`;
+        });
+}
