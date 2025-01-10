@@ -1,12 +1,12 @@
-document.querySelector("#buscar").addEventListener("click", (event) => {
+document.querySelector("#buscar").addEventListener("click", async (event) => {
     event.preventDefault();
 
-    const texto = document.querySelector("#nombre").value.trim();
+    const texto = document.querySelector("#nombre").value || "zrivrio";
     const result = document.querySelector("#result");
 
     const url = `https://api.github.com/users/${texto}`;
 
-    fetch(url)
+    await fetch(url)
         .then((response) => {
             if (!response.ok) {
                 return response.json().then(err => {
@@ -15,26 +15,26 @@ document.querySelector("#buscar").addEventListener("click", (event) => {
             }
             return response.json();
         })
-        .then((data) => {
+        .then(async (data) => {
             result.innerHTML = `
                 <p>Fecha de Creación: ${new Date(data.created_at).toLocaleDateString()}</p>
                 <p>Seguidores: ${data.followers}</p>
                 <div id="listaSeguidores"></div>
-
+                <p>-------------------------------------</p>
                 <p>Seguidos: ${data.following}</p>
                 <div id="listaSeguidos"></div>
             `;
 
-            fetchDatosUsuarios(`https://api.github.com/users/${texto}/followers`, "#listaSeguidores", "Seguidores");
-            fetchDatosUsuarios(`https://api.github.com/users/${texto}/following`, "#listaSeguidos", "Seguidos");
+            await fetchDatosUsuarios(`https://api.github.com/users/${texto}/followers`, "#listaSeguidores", "Seguidores");
+            await fetchDatosUsuarios(`https://api.github.com/users/${texto}/following`, "#listaSeguidos", "Seguidos");
         })
         .catch((error) => {
             result.innerHTML = `<p>Error: ${error.message}</p>`;
         });
 });
 
-function fetchDatosUsuarios(url, idDiv, tipo) {
-    fetch(url)
+async function fetchDatosUsuarios(url, idDiv, tipo) {
+    await fetch(url)
         .then((response) => {
             if (!response.ok) {
                 return response.json().then(err => {
@@ -43,14 +43,14 @@ function fetchDatosUsuarios(url, idDiv, tipo) {
             }
             return response.json();
         })
-        .then((data) => {
+        .then(async (data) => {
             const div = document.querySelector(idDiv);
             if (!data.length) {
                 div.innerHTML = `<p>No se encontraron ${tipo.toLowerCase()}.</p>`;
                 return;
             }
 
-            const detallesPromises = data.map(u =>
+           const detallesPromises = await data.map(u =>
                 fetch(u.url)
                     .then((response) => {
                         if (!response.ok) {
