@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form id="formulario">
+
+        <div>
+            <label for="buscador">Buacador</label>
+            <input type="text" name="buscador" id="buscador">
+        </div>
+
+
+        <!-- Todos los selec te rellenan automaticamente de los filtros -->
+        <div>
+            <select name="pais_publi" id="pais_publi">
+                <option value="">--Seleccione un pais--</option>
+            </select>
+        </div>
+
+        <div>
+            <select name="fecha_i" id="fecha_i">
+                <option value="">--Seleccione un año--</option>
+            </select>
+            <select name="fecha_f" id="fecha_f">
+                <option value="">--Seleccione un año--</option>
+            </select>
+        </div>
+
+        <div class="checkboxF">
+            <div>
+                <label for="all">Todos</label>
+                <input type="checkbox" id="all" name="all">
+            </div>
+        </div>
+
+
+    </form>
+
+    <p id="numLibros"></p>
+
+    <div id="librosMostrar"></div>
+
+    <script src="lista_libros.js"></script>
+    <script src="filtros.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
