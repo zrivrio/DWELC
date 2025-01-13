@@ -1,5 +1,5 @@
 
-document.querySelector("#ciudadButton").addEventListener("click", (event) => {
+document.querySelector("#ciudadButton").addEventListener("click",  (event) => {
     event.preventDefault();
     const texto = document.querySelector("#ciudadTexto");
     const result = document.querySelector("#result");
