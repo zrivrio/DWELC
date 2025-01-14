@@ -3,47 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gestor de Libros</title>
+    <style>
+        .detalles { display: none; }
+        .fondo { background-color: #a5dfff; }
+        .checkboxF div { display: inline-block; margin: 5px; }
+    </style>
 </head>
 <body>
-    
-    <form id="formulario">
+    <h1>Gestor de Libros</h1>
 
-        <div>
-            <label for="buscador">Buacador</label>
-            <input type="text" name="buscador" id="buscador">
-        </div>
-
-
-        <!-- Todos los selec te rellenan automaticamente de los filtros -->
-        <div>
-            <select name="pais_publi" id="pais_publi">
-                <option value="">--Seleccione un pais--</option>
-            </select>
-        </div>
-
-        <div>
-            <select name="fecha_i" id="fecha_i">
-                <option value="">--Seleccione un año--</option>
-            </select>
-            <select name="fecha_f" id="fecha_f">
-                <option value="">--Seleccione un año--</option>
-            </select>
-        </div>
-
+    <section id="filtros">
+        <h2>Filtros de Búsqueda</h2>
+        <input type="text" id="busqueda" placeholder="Buscar por título, autor o género">
+        <select id="pais_publi"></select>
+        <select id="fecha_i"></select>
+        <select id="fecha_f"></select>
         <div class="checkboxF">
-            <div>
-                <label for="all">Todos</label>
-                <input type="checkbox" id="all" name="all">
-            </div>
+            <button id="toggleGeneros">Seleccionar Todos los Géneros</button>
         </div>
+        <button id="filtrar">Aplicar Filtros</button>
+    </section>
 
-
-    </form>
-
-    <p id="numLibros"></p>
-
-    <div id="librosMostrar"></div>
+    <section id="resultados">
+        <h2>Resultados</h2>
+        <p id="numLibros"></p>
+        <div id="librosMostrar"></div>
+    </section>
 
     <script src="lista_libros.js"></script>
     <script src="filtros.js"></script>

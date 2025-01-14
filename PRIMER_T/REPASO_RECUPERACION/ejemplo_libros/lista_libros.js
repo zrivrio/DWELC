@@ -1,4 +1,4 @@
-const lista_libros = [
+const libros = [
     {
         "title": "To Kill a Mockingbird",
         "author": "Harper Lee",
