@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
 import {FormsModule} from "@angular/forms";
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-ex06',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule, CommonModule
   ],
   templateUrl: './ex06.component.html',
  // styleUrl: './ex06.component.css'
@@ -31,5 +33,9 @@ export class Ex06Component {
 
   converToFahrenheit() {
     this.fahrenheit = this.celcius * 9 / 5 + 32;
+  }
+
+  isNumber(value:any):boolean{
+    return typeof value === 'number' && !isNaN(value);
   }
 }
