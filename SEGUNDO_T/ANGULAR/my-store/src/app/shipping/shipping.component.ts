@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CartService } from '../cart.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-shipping',
-  imports: [Observable],
+  imports: [CommonModule],
   templateUrl: './shipping.component.html',
   styleUrl: './shipping.component.css'
 })
@@ -13,8 +14,7 @@ export class ShippingComponent {
   shippingCosts!: Observable<{ type: string, price: number }[]>;
 
   ngOnInit(): void {
-    // Fetch shipping data from the CartService
-    this.shippingCosts = this.cartService.getShippingPrices();
+    this.shippingCosts =  this.cartService.getShippingPrices();
   }
 
 }
