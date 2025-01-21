@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product, products } from '../products';
+import { HttpClientModule } from '@angular/common/http';
 import { CartService } from '../cart.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 
 @Component({
+  standalone:true,
   selector: 'app-product-details',
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule, NgIf],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
@@ -15,12 +17,18 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private cartService:CartService
-  ) { }
+  ) { 
+  
+  }
 
   ngOnInit() {
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = Number(routeParams.get('productId'));
   
+    console.log(routeParams);
+    console.log(productIdFromRoute);
+    
+    
     this.product = products.find(product => product.productId === productIdFromRoute);
   }
 
