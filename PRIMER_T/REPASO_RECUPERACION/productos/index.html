@@ -16,7 +16,7 @@
 <body>
 
     <h1>Buscar Productos</h1>
-<div>
+<div class="container">
     <input type="text" id="busquedaTexto" placeholder="Buscar productos">
     <select id="filtroCategoria">
         <option value="all">Todas las categorías</option>
@@ -35,8 +35,24 @@
     <button id="buscar">Buscar</button>
 
 </div>
-    <div id="resultadosCantidad">0 producto(s) encontrados<</div>
+    <div id="resultadosCantidad">0 producto(s) encontrados</div>
     <div id="resultados"></div>
+
+    <h2>
+        CARRITO
+    </h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Servicio</th>
+                <th>Precio</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <h3>Total: <span id="total"> €0</span></h3>
     
     <script src="productos.js"></script>
     <script src="script.js"></script>
