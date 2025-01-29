@@ -7,6 +7,8 @@ import { delay } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class HousingService {
+
+  //Añadir el servidor json
   readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
 
   constructor() {}

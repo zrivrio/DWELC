@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recupercaion</title>
+    <style>
+        .rojo{
+            background-color: red;
+        }
+        .amarillo{
+            background-color: yellow;
+        }
+        .verde{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>ZAHIRA RIVAS RIOS</h1>
+
+    <form id="completeForm">
+        <!-- Nombre -->
+        <div class="form-group">
+            <label for="titulo">Titulo:</label>
+            <input type="text" id="titulo" name="titulo" placeholder="Ingrese un titulo" required>
+            <span class="error" id="tituloError"></span>
+        </div>
+        <!-- Nombre -->
+        <div class="form-group">
+            <label for="date">Fecha Vencimeinto:</label>
+            <input type="date" id="date" name="date" required>
+            <span class="error" id="dateError"></span>
+        </div>
+        <!-- Nombre -->
+        <div class="form-group">
+            <label for="prioridad">Prioridad:</label>
+            <select id="prioridad" name="prioridad" required>
+                <option value="">Seleccione...</option>
+                <option value="c">Baja</option>
+                <option value="b">Media</option>
+                <option value="a">Alta</option>
+            </select>
+            <span class="error" id="prioridadError"></span>
+        </div>
+    
+        <button type="button" id="crear">Enviar</button>
+    </form>
+
+    <div>
+        <button id="consola">Mostrar Consola</button>
+    </div>
+
+     <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Titulo</th>
+                <th>Fecha Vencimeinto</th>
+                <th>Prioridad</th>
+                <th>Completada</th>
+                <th>Fecha Creacion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="taskTableBody"></tbody>
+    </table>
+    
+    <script src="script_ZRR.js"></script>
+</body>
+</html>
