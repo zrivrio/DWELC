@@ -1,0 +1,25 @@
+<div>
+    <h2>Lista de Eventos</h2>
+    <label>
+      Filtrar por tipo:
+      <select [(ngModel)]="filterType">
+        <option value="all">Todos</option>
+        <option value="log">Log</option>
+        <option value="warn">Warn</option>
+        <option value="error">Error</option>
+      </select>
+    </label>
+  
+    <ul>
+      <li *ngFor="let event of filteredEvents">
+        <strong>{{ event.title }}</strong> - {{ event.type }} ({{ event.date | date }})
+        <p>{{ event.description }}</p>
+      </li>
+    </ul>
+  
+    <div>
+      <p>Logs: {{ eventCounts.log }}</p>
+      <p>Warns: {{ eventCounts.warn }}</p>
+      <p>Errors: {{ eventCounts.error }}</p>
+    </div>
+  </div>
