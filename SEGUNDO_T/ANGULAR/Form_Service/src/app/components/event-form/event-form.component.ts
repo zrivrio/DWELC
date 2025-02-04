@@ -1,15 +1,17 @@
 
 //Componentes necesarios para el formulario de registro de eventos
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoggerService } from '../../services/logger.service'; 
 import { Evento } from '../../models/event-model';
 import { Client } from '../../models/client-model';
 import { Employee } from '../../models/employee-model';
+import { CommonModule, NgFor } from '@angular/common';
+
 
 @Component({
   selector: 'app-event-form',
-  imports: [],
+  imports: [CommonModule,NgFor, FormsModule, ReactiveFormsModule ],
   templateUrl: './event-form.component.html',
   styleUrl: './event-form.component.css'
 })

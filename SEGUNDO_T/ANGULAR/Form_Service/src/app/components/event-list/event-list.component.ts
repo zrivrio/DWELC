@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { LoggerService } from '../../services/logger.service';
 import { Evento } from '../../models/event-model'; 
 import { CommonModule, NgFor } from '@angular/common';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importa estos módulos
 
 @Component({
   selector: 'app-event-list',
   templateUrl: './event-list.component.html',
-  imports: [CommonModule, NgFor],
+  imports: [CommonModule, NgFor, FormsModule, ReactiveFormsModule],
   styleUrls: ['./event-list.component.css']
 })
 export class EventListComponent {
