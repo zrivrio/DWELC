@@ -12,27 +12,27 @@ import { Event } from '../../models/event.model';
 })
 export class EventListComponent {
 
-  allEvents: Event[] =[];
+  allEvents: Event[] = [];
   events: Event[] = [];
-  eventsCount = { log: 0, warm: 0, error: 0 };
+  eventsCount = { log: 0, warn: 0, error: 0 }; 
 
   constructor(private loggerService: LoggerService) {}
 
   ngOnInit(): void {
-    this.allEvents= this.loggerService.getEvents();
+    this.allEvents = this.loggerService.getEvents();
     this.updateEventCount();
     this.events = [...this.allEvents];
   }
 
   updateEventCount(): void {
-    this.eventsCount={
-      log: this.allEvents.filter(event => event.category === 'log').length,
-      warm: this.allEvents.filter(event => event.category === 'warm').length,
-      error: this.allEvents.filter(event => event.category === 'error').length
-    }
+    this.eventsCount = {
+      log: this.allEvents.filter(event => event.type === 'log').length,   
+      warn: this.allEvents.filter(event => event.type === 'warn').length, 
+      error: this.allEvents.filter(event => event.type === 'error').length
+    };
   }
 
   onFilterCategory(category: string): void {
-   this.events = this.allEvents.filter(event => event.category === category);
+    this.events = this.allEvents.filter(event => event.type === category); 
   }
 }

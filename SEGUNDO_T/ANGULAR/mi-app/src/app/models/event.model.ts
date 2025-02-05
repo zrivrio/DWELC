@@ -5,7 +5,7 @@ export interface Event {
   date: Date;
   title: string;
   description: string;
-  category: 'log' | 'warm' | 'error';
+  type: 'log' | 'warn' | 'error';
   createdDate: Date;
 }
 
