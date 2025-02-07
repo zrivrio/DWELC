@@ -17,6 +17,18 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'; // Importa el Dat
   styleUrls: ['./event-form.component.css']
 })
 export class EventFormComponent {
+
+  //Modificar el codigo para que utilice el localStorage 
+  //Los datos deben de estar en un json, modificar para que utilice el localstorage modificar el codigo para que seleciones un empleado y se vea selecionado ese empleado
+  //no hay array de clienet solo empleado
+  //crear un service solo para empleados utilizar un fech para cargar los datos del son de empleados
+  //si se le pone el new formControl entre parentesis y entre comillas un dato aparece ya como cat en el form y dentro de los parentesis tambien se puede poner el validator
+  //formulario.value|json
+  //evento debe de tener empleado tipo titulo cliente fecha y descripcion
+  //crear un componente con los empleados y que s emuestren en un nav bar
+  //hacer un control mas o menos como un login
+  //Este va ha ser el examen del 19 solo va ha ber que cambiar cosas modificar o editar
+
   
   eventForm: FormGroup;
 
