@@ -5,34 +5,43 @@ import { EventSService } from '../../services/event-s.service';
 import { EmployeeSService } from '../../services/employee-s.service';
 import { EventM } from '../../models/eventM.model';
 import { EmployeeM } from '../../models/employeeM.model';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'; 
 
 @Component({
   selector: 'app-event-form',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, BsDatepickerModule],
   templateUrl: './event-form.component.html',
   styleUrl: './event-form.component.css'
 })
 export class EventFormComponent implements OnInit {
   eventForm: FormGroup;
-  employees : EmployeeM[] = [];
+  employees: EmployeeM[] = [];
+
+  bsConfig = {
+    dateInputFormat: 'DD-MM-YYYY',
+    isAnimated: true,
+    containerClass: 'theme-blue'
+  };
 
   constructor(
     private fb: FormBuilder,
     private eventService: EventSService,
     private employeeService: EmployeeSService
-  ){
+  ) {
     this.eventForm = this.fb.group({
-      title: ["Prueba1", Validators.required],
+      title: ['Prueba1', Validators.required],
       description: [''],
       classification: ['log', Validators.required],
       employee: ['', Validators.required],
       client: ['', Validators.required],
       date: ['', Validators.required]
-    })
+    });
   }
 
   ngOnInit(): void {
-    this.employees = this.employeeService.getEmployees();
+    this.employeeService.employees$.subscribe(data => {
+      this.employees = data;
+    });
   }
 
   onSubmit(): void {
@@ -46,6 +55,4 @@ export class EventFormComponent implements OnInit {
       this.eventForm.reset();
     }
   }
-
-
 }

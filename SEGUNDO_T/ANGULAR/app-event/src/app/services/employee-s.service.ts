@@ -1,22 +1,30 @@
 import { Injectable } from '@angular/core';
 import { EmployeeM } from '../models/employeeM.model';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeSService {
-
-  private employees: EmployeeM[] =[];
+  
+  private employeesSubject = new BehaviorSubject<EmployeeM[]>([]); 
+  employees$ = this.employeesSubject.asObservable();
 
   constructor() {
     this.loadEmployees();
-   }
+  }
 
-   getEmployees(){
-    return this.employees;
-   }
+  private async loadEmployees() {
+    try {
+      const response = await fetch('http://localhost:3000/employee');
+      const data: EmployeeM[] = await response.json();
+      this.employeesSubject.next(data); // Emitir los empleados cuando se carguen
+    } catch (error) {
+      console.error('Error al cargar empleados:', error);
+    }
+  }
 
-   setSelectedEmployee(employee: EmployeeM) {
+  setSelectedEmployee(employee: EmployeeM) {
     localStorage.setItem('selectedEmployee', JSON.stringify(employee));
   }
 
@@ -25,15 +33,6 @@ export class EmployeeSService {
       const storedEmployee = localStorage.getItem('selectedEmployee');
       return storedEmployee ? JSON.parse(storedEmployee) : null;
     }
-    return null; // Retorna null si localStorage no está disponible
-  }
-  
-
-  private loadEmployees() {
-    fetch('http://localhost:3000/employee')
-      .then(response => response.json())
-      .then(data => {
-        this.employees = data;
-      });
+    return null;
   }
 }

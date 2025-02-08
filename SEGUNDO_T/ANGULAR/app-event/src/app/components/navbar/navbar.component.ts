@@ -9,21 +9,28 @@ import { CommonModule } from '@angular/common';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
 
-  employees : EmployeeM[] = [];
+  employees: EmployeeM[] = [];
   selectedEmployee: EmployeeM | null = null;
 
   constructor(private employeeService: EmployeeSService) {}
+
   ngOnInit(): void {
-    this.employees = this.employeeService.getEmployees();
+    // Suscribirse a employees$ para obtener los datos cuando estén listos
+    this.employeeService.employees$.subscribe(data => {
+      this.employees = data;
+    });
+
     this.selectedEmployee = this.employeeService.getSelectedEmployee();
   }
 
   onEmployeeChange(event: Event): void {
-    const selectedId = (event.target as HTMLSelectElement).value; // Obtener ID seleccionado
-    this.selectedEmployee = this.employees.find(emp => emp.id.toString() === selectedId) || null; // Buscar empleado
-    this.employeeService.setSelectedEmployee(this.selectedEmployee!); // Guardar empleado seleccionado
+    const selectedId = (event.target as HTMLSelectElement).value;
+    const employee = this.employees.find(emp => emp.id.toString() === selectedId);
+    if (employee) {
+      this.selectedEmployee = employee;
+      this.employeeService.setSelectedEmployee(employee);
+    }
   }
-  
 }
