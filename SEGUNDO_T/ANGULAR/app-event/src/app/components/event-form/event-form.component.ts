@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EventSService } from '../../services/event-s.service';
 import { EmployeeSService } from '../../services/employee-s.service';
 import { EventM } from '../../models/eventM.model';
@@ -8,7 +8,7 @@ import { EmployeeM } from '../../models/employeeM.model';
 
 @Component({
   selector: 'app-event-form',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './event-form.component.html',
   styleUrl: './event-form.component.css'
 })
