@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <h2>Event List</h2>
+  <div class="mb-3">
+    <label for="filter" class="form-label">Filter by Classification:</label>
+    <select id="filter" class="form-select" (change)="onFilterChange($event)">
+      <option value="all">All</option>
+      <option value="log">Log</option>
+      <option value="warn">Warn</option>
+      <option value="error">Error</option>
+    </select>
+  </div>
+  <ul class="list-group">
+    <li *ngFor="let event of getFilteredEventos()" class="list-group-item">
+      <strong>{{ event.title }}</strong> - {{ event.description }} ({{ event.classification }})
+      <br>
+      <small class="text-muted">Employee: {{ event.employee }} | Date: {{ event.eventDate | date }}</small>
+    </li>
+  </ul>
+</div>

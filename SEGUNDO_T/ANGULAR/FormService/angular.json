@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Form_Service": {
+    "FormService": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -27,9 +27,14 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
@@ -64,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Form_Service:build:production"
+              "buildTarget": "FormService:build:production"
             },
             "development": {
-              "buildTarget": "Form_Service:build:development"
+              "buildTarget": "FormService:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -99,6 +104,6 @@
     }
   },
   "cli": {
-    "analytics": "8ebc20f2-7796-47aa-8896-cbc869e19f0b"
+    "analytics": "2f29e22f-f978-4c6c-bf0f-68776ac1e5e9"
   }
 }
