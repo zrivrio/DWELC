@@ -21,9 +21,13 @@ export class EmployeeSService {
   }
 
   getSelectedEmployee(): EmployeeM | null {
-    const employee = localStorage.getItem('selectedEmployee');
-    return employee ? JSON.parse(employee) : null;
+    if (typeof localStorage !== 'undefined') {
+      const storedEmployee = localStorage.getItem('selectedEmployee');
+      return storedEmployee ? JSON.parse(storedEmployee) : null;
+    }
+    return null; // Retorna null si localStorage no está disponible
   }
+  
 
   private loadEmployees() {
     fetch('http://localhost:3000/employee')

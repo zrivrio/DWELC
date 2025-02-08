@@ -1,1 +1,12 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Sistema de Eventos</a>
+      <div class="d-flex align-items-center">
+        <span class="me-3">Empleado seleccionado: <strong>{{ selectedEmployee?.name || 'Ninguno' }}</strong></span>
+        <select class="form-select" (change)="onEmployeeChange($event)">
+            <option value="">Seleccionar empleado</option>
+            <option *ngFor="let emp of employees" [value]="emp.id">{{ emp.name }}</option>
+          </select>          
+      </div>
+    </div>
+  </nav>
