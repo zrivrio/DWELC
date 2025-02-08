@@ -12,7 +12,7 @@ import { EmployeeM } from '../../models/employeeM.model';
   templateUrl: './event-form.component.html',
   styleUrl: './event-form.component.css'
 })
-export class EventFormComponent {
+export class EventFormComponent implements OnInit {
   eventForm: FormGroup;
   employees : EmployeeM[] = [];
 

@@ -1,1 +1,44 @@
-<p>event-list works!</p>
+<div class="container mt-4">
+    <h2>Lista de Eventos</h2>
+  
+    <!-- Filtros por clasificación -->
+    <div class="mb-3">
+      <label for="filter" class="form-label">Filtrar por clasificación:</label>
+      <select class="form-select" id="filter" (change)="onFilterChange($event)">
+        <option value="all">Todos</option>
+        <option value="log">Log</option>
+        <option value="warn">Warn</option>
+        <option value="error">Error</option>
+      </select>
+    </div>
+  
+    <!-- Tabla de eventos -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Descripción</th>
+          <th>Clasificación</th>
+          <th>Empleado</th>
+          <th>Cliente</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events">
+          <td>{{ event.title }}</td>
+          <td>{{ event.description }}</td>
+          <td [ngClass]="{
+            'text-success': event.classification === 'log',
+            'text-warning': event.classification === 'warn',
+            'text-danger': event.classification === 'error'
+          }">
+            {{ event.classification }}
+          </td>
+          <td>{{ event.employee.name }}</td>
+          <td>{{ event.client }}</td>
+          <td>{{ event.date | date: 'dd/MM/yyyy' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
