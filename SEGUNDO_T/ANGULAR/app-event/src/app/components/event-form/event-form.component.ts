@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { EmployeeM } from '../../models/employeeM.model';
 import { EventSService } from '../../services/event-s.service';
 import { EmployeeSService } from '../../services/employee-s.service';
-import { EventM } from '../../models/eventM.model';
-import { EmployeeM } from '../../models/employeeM.model';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'; 
+import { CommonModule } from '@angular/common';
+import { BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-event-form',
-  imports: [CommonModule, ReactiveFormsModule, BsDatepickerModule],
   templateUrl: './event-form.component.html',
-  styleUrl: './event-form.component.css'
+  imports:[CommonModule, ReactiveFormsModule, BsDatepickerModule],
+  styleUrls: ['./event-form.component.css']
 })
 export class EventFormComponent implements OnInit {
   eventForm: FormGroup;
-  employees: EmployeeM[] = [];
+  selectedEmployee: EmployeeM | null = null;
 
   bsConfig = {
     dateInputFormat: 'DD-MM-YYYY',
@@ -29,8 +28,8 @@ export class EventFormComponent implements OnInit {
     private employeeService: EmployeeSService
   ) {
     this.eventForm = this.fb.group({
-      title: ['Prueba1', Validators.required],
-      description: [''],
+      title: ['', Validators.required],
+      description: ['', Validators.required],
       classification: ['log', Validators.required],
       employee: ['', Validators.required],
       client: ['', Validators.required],
@@ -39,20 +38,33 @@ export class EventFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employeeService.employees$.subscribe(data => {
-      this.employees = data;
+    // Aquí obtienes el empleado seleccionado (si es que existe)
+    this.employeeService.getSelectedEmployee().subscribe(employee => {
+      this.selectedEmployee = employee;
+      // Si se selecciona un empleado, puedes actualizar el formulario con su ID
+      if (employee) {
+        this.eventForm.patchValue({
+          employee: employee.id
+        });
+      }
     });
   }
 
   onSubmit(): void {
-    if (this.eventForm.valid) {
-      const evento: EventM = {
+    // Asegúrate de que el empleado esté seleccionado antes de enviar el formulario
+    if (this.eventForm.valid && this.selectedEmployee !== null) {
+      const evento = {
         ...this.eventForm.value,
+        employee: this.selectedEmployee,  // Pasamos el objeto completo del empleado
         id: Date.now(),
         createdAt: new Date()
       };
+
+      // Si el empleado es nulo, no deberíamos continuar con el envío del formulario
       this.eventService.addEvento(evento);
       this.eventForm.reset();
+    } else {
+      console.error('Debe seleccionar un empleado antes de enviar el formulario.');
     }
   }
 }

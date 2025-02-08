@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-navbar',
   imports: [CommonModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
 
@@ -17,20 +17,21 @@ export class NavbarComponent implements OnInit {
   constructor(private employeeService: EmployeeSService) {}
 
   ngOnInit(): void {
-    // Suscribirse a employees$ para obtener los datos cuando estén listos
-    this.employeeService.employees$.subscribe(data => {
-      this.employees = data;
+    // Suscribirse al observable de empleados
+    this.employeeService.getEmployees().subscribe(employees => {
+      this.employees = employees; // Asignar la lista de empleados
     });
 
-    this.selectedEmployee = this.employeeService.getSelectedEmployee();
+    // Suscribirse al observable del empleado seleccionado
+    this.employeeService.getSelectedEmployee().subscribe(employee => {
+      this.selectedEmployee = employee; // Asignar el empleado seleccionado
+    });
   }
 
   onEmployeeChange(event: Event): void {
-    const selectedId = (event.target as HTMLSelectElement).value;
-    const employee = this.employees.find(emp => emp.id.toString() === selectedId);
-    if (employee) {
-      this.selectedEmployee = employee;
-      this.employeeService.setSelectedEmployee(employee);
-    }
+    const selectedId = (event.target as HTMLSelectElement).value; // Obtener el valor seleccionado
+    this.selectedEmployee = this.employees.find(emp => emp.id.toString() === selectedId) || null;
+    this.employeeService.setSelectedEmployee(this.selectedEmployee); // Actualizar el empleado seleccionado
   }
+
 }

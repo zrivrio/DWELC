@@ -32,9 +32,9 @@
     <!-- Empleado -->
     <div class="mb-3">
       <label for="employee" class="form-label">Empleado</label>
-      <select class="form-select" id="employee" formControlName="employee" required>
-        <option *ngFor="let emp of employees" [value]="emp.id">{{ emp.name }}</option>
-      </select>
+      <div *ngIf="selectedEmployee">
+        <p>Empleado seleccionado: {{ selectedEmployee.name }}</p>
+      </div>
     </div>
 
     <!-- Cliente -->
