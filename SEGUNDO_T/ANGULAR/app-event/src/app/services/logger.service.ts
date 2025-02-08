@@ -13,25 +13,17 @@ export class LoggerService {
   constructor() {
   }
 
-  log(msg: string) {
-    console.log(msg);
-    this.countLog++;
-    this.showCounts();
+  getCounts() {
+    return {
+      log: this.countLog,
+      warn: this.countWarn,
+      error: this.countError
+    };
   }
 
-  error(msg: string) {
-    console.error(msg);
-    this.countError++;
-    this.showCounts();
-  }
-
-  warn(msg: string) {
-    console.warn(msg);
-    this.countWarn++;
-    this.showCounts();
-  }
-
-  showCounts(){
-    console.log(this.countLog,this.countWarn,this.countError);
+   updateCounts(classification: 'log' | 'warn' | 'error') {
+    if (classification === 'log') this.countLog++;
+    else if (classification === 'warn') this.countWarn++;
+    else if (classification === 'error') this.countError++;
   }
 }
