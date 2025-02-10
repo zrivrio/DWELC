@@ -19,21 +19,21 @@ export class NavbarComponent implements OnInit {
   constructor(private employeeService: EmployeeSService) {}
 
   ngOnInit(): void {
-    // Suscribirse al observable de empleados
+   
     this.employeeService.getEmployees().subscribe(employees => {
-      this.employees = employees; // Asignar la lista de empleados
+      this.employees = employees; 
     });
 
-    // Suscribirse al observable del empleado seleccionado
+   
     this.employeeService.getSelectedEmployee().subscribe(employee => {
-      this.selectedEmployee = employee; // Asignar el empleado seleccionado
+      this.selectedEmployee = employee; 
     });
   }
 
   onEmployeeChange(event: Event): void {
-    const selectedId = (event.target as HTMLSelectElement).value; // Obtener el valor seleccionado
+    const selectedId = (event.target as HTMLSelectElement).value; 
     this.selectedEmployee = this.employees.find(emp => emp.id.toString() === selectedId) || null;
-    this.employeeService.setSelectedEmployee(this.selectedEmployee); // Actualizar el empleado seleccionado
+    this.employeeService.setSelectedEmployee(this.selectedEmployee); 
   }
 
 }

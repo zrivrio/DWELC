@@ -38,10 +38,10 @@ export class EventFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Aquí obtienes el empleado seleccionado (si es que existe)
+   
     this.employeeService.getSelectedEmployee().subscribe(employee => {
       this.selectedEmployee = employee;
-      // Si se selecciona un empleado, puedes actualizar el formulario con su ID
+     
       if (employee) {
         this.eventForm.patchValue({
           employee: employee.id
@@ -51,18 +51,16 @@ export class EventFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // Asegúrate de que el empleado esté seleccionado antes de enviar el formulario
     if (this.eventForm.valid && this.selectedEmployee !== null) {
       const evento = {
         ...this.eventForm.value,
-        employee: this.selectedEmployee,  // Pasamos el objeto completo del empleado
+        employee: this.selectedEmployee, 
         id: Date.now(),
         createdAt: new Date()
       };
 
       console.log("Evento a guardar:" , evento)
 
-      // Si el empleado es nulo, no deberíamos continuar con el envío del formulario
       this.eventService.addEvento(evento);
       this.eventForm.reset();
     } else {

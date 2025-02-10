@@ -28,12 +28,15 @@
         <tr *ngFor="let event of eventos">
           <td>{{ event.title }}</td>
           <td>{{ event.description }}</td>
-          <td [ngClass]="{
-            'text-success': event.classification === 'log',
-            'text-warning': event.classification === 'warn',
-            'text-danger': event.classification === 'error'
-          }">
-            {{ event.classification }}
+          <td>
+            <span class="badge text-uppercase px-2 py-1" 
+              [ngClass]="{
+                'bg-success': event.classification === 'log',
+                'bg-warning text-dark': event.classification === 'warn',
+                'bg-danger': event.classification === 'error'
+              }">
+              {{ event.classification }}
+            </span>
           </td>
           <td>{{ event.employee.name }}</td>
           <td>{{ event.client }}</td>

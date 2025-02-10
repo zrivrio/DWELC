@@ -7,39 +7,39 @@ import { EmployeeM } from '../models/employeeM.model';
 })
 export class EmployeeSService {
   
-  private employeesSubject = new BehaviorSubject<EmployeeM[]>([]); // Emisor de empleados
+  private employeesSubject = new BehaviorSubject<EmployeeM[]>([]); 
   private selectedEmployeeSubject = new BehaviorSubject<EmployeeM | null>(null);
 
   constructor() {
     this.loadEmployees();
   }
 
-  // Obtener el observable de empleados
+ 
   getEmployees() {
-    return this.employeesSubject.asObservable(); // Retorna un observable
+    return this.employeesSubject.asObservable(); 
   }
 
-  // Obtener el observable del empleado seleccionado
+
   getSelectedEmployee() {
     return this.selectedEmployeeSubject.asObservable();
   }
 
-  // Establecer el empleado seleccionado
+
   setSelectedEmployee(employee: EmployeeM | null) {
-    this.selectedEmployeeSubject.next(employee);  // Emitir el nuevo empleado seleccionado
+    this.selectedEmployeeSubject.next(employee); 
     if (employee) {
       localStorage.setItem('selectedEmployee', JSON.stringify(employee));
     } else {
-      localStorage.removeItem('selectedEmployee');  // Si es null, eliminamos el item
+      localStorage.removeItem('selectedEmployee');  
     }
   }
 
-  // Cargar empleados (simulado aquí como un fetch)
+ 
   private loadEmployees() {
     fetch('http://localhost:3000/employee')
       .then(response => response.json())
       .then(data => {
-        this.employeesSubject.next(data); // Emitir los empleados al BehaviorSubject
+        this.employeesSubject.next(data); 
       })
       .catch(error => console.error('Error al cargar los empleados:', error));
   }

@@ -23,20 +23,20 @@ export class EventSService {
     console.log("Evento agregado:", evento);
     
     this.loggerService.updateCounts(evento.classification);
-    this.saveEventos(); // Guardar en localStorage
+    this.saveEventos(); 
   }
 
   private saveEventos(): void {
-    localStorage.setItem('eventos', JSON.stringify(this.eventos)); // Usar "eventos" en plural
+    localStorage.setItem('eventos', JSON.stringify(this.eventos)); 
   }
 
   loadEventos(): void {
     if(typeof localStorage !=='undefined'){
-      const eventosLoad = localStorage.getItem('eventos'); // Usar la misma clave "eventos"
+      const eventosLoad = localStorage.getItem('eventos');
       this.eventos = eventosLoad ? JSON.parse(eventosLoad) : [];
       if (!Array.isArray(this.eventos)) {
         this.eventos = [];
-      } // Si es null, asigna un array vacío
+      }
     } else {
       this.eventos = [];
     }
