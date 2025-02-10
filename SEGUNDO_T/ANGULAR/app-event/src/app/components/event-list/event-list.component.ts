@@ -11,28 +11,14 @@ import { CommonModule } from '@angular/common';
 })
 export class EventListComponent implements OnInit {
   eventos: EventM[] = [];
-  eventoPrueba: EventM;
 
-  constructor(private eventService: EventSService) {
-    this.eventoPrueba = {
-      id: 1,
-      title: "Evento de Prueba",
-      description: "Descripción de prueba",
-      classification: "log",
-      employee: { id: 1, name: "Empleado Prueba" },
-      client: "Cliente de Prueba",
-      date: new Date(),
-      createdAt: new Date(),
-    };
-  }
+  constructor(private eventService: EventSService) {}
 
   ngOnInit(): void {
+    this.eventService.loadEventos();
     this.eventos = this.eventService.getEventos();
-    this.eventos.push(this.eventoPrueba);
-
-    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
-      localStorage.setItem("evento", JSON.stringify(this.eventoPrueba));
-    }
+  
+    console.log("Eventos cargados en EventListComponent:", this.eventos);
   }
 
   onFilterChange(event: Event): void {

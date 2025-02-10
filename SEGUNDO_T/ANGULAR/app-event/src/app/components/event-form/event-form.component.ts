@@ -60,6 +60,8 @@ export class EventFormComponent implements OnInit {
         createdAt: new Date()
       };
 
+      console.log("Evento a guardar:" , evento)
+
       // Si el empleado es nulo, no deberíamos continuar con el envío del formulario
       this.eventService.addEvento(evento);
       this.eventForm.reset();
