@@ -14,4 +14,13 @@
       <p *ngIf="employees.length === 0">Cargando empleados...</p>
     </div>
   </div>
+
+  <div>
+      <a href="#" [routerLink]="['/form']" routerLinkActive="btn btn-info" class="text-decoration-none text-dark">
+        Formulario de eventos
+    </a>
+    <a href="#" [routerLink]="['/list']" routerLinkActive="btn btn-info" class="text-decoration-none text-dark">
+     Lista de eventos
+  </a>
+  </div>
 </nav>
