@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { NavbarComponent } from '../../navbar/navbar.component';
 
 @Component({
   selector: 'app-crear-musicos',
-  imports: [],
+  imports: [NavbarComponent],
   templateUrl: './crear-musicos.component.html',
   styleUrl: './crear-musicos.component.css'
 })
