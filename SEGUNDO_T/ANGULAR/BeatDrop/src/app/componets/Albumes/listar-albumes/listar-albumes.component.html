@@ -1,3 +1,20 @@
 <app-navbar></app-navbar>
-
+<div class="container">
+    <h1>Álbumes</h1>
+    <a href="#" [routerLink]="[ '/albumes/crear' ]" class="btn btn-customA">Crear Álbum</a>
+  
+    <div class="albumes-container mt-5">
+      <div *ngIf="albumes.length === 0">No hay álbumes disponibles.</div>
+  
+      <div *ngFor="let album of albumes" class="card">
+        <img [src]="album.imagen_url" alt="{{ album.titulo }}">
+        <h3>{{ album.titulo }}</h3>
+        <p><strong>Año:</strong> {{ album.anio_lanzamiento }}</p>
+        <p><strong>Género:</strong> {{ album.genero }}</p>
+        <p><strong>Número de Canciones:</strong> {{ album.canciones }}</p>
+        <p><strong>Duración:</strong> {{ album.duracion_total }}</p>
+      </div>
+    </div>
+  </div>
+  
 <app-footer></app-footer>
