@@ -21,6 +21,7 @@ export class ListarAlbumesComponent implements OnInit {
 
   ngOnInit(): void {
     this.albumesService.getAlbumes().subscribe(data => {
+      console.log(data);
       this.albumes = data;
     });
   }
