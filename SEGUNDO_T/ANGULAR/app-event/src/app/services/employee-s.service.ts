@@ -55,6 +55,7 @@ export class EmployeeSService {
       .then(response => response.json()) //Convierte la s respuesta a json
       .then(data => {
           // Actualiza el valor del BehaviorSubject 'employeesSubject' con los datos recibidos.
+          //El next es el quesirve para pasarle los datos a los componentes que esta suscritos a este Observable
         this.employeesSubject.next(data); 
       })
       .catch(error => console.error('Error al cargar los empleados:', error)); //Maneja los errores que puedan ocurrir

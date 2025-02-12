@@ -14,6 +14,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 })
 export class EventFormComponent implements OnInit {
 
+  //Los servicios se puedne llamar de diefente manera unos en el constructor y la oatra manera es la siguiente
+  //employeeService : inject(EmployeeSService)
+
   // defino una propiedad 'eventForm' que es un FormGroup.
   // Este FormGroup contendrá los controles del formulario.
   eventForm: FormGroup;
