@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventSService } from '../../services/event-s.service';
 import { EventM } from '../../models/eventM.model';
 import { CommonModule } from '@angular/common';
+import { LoggerService } from '../../services/logger.service';
 
 @Component({
   selector: 'app-event-list',
@@ -15,8 +16,13 @@ export class EventListComponent implements OnInit {
   //En esta propiedada se almacenara la lista de eventos
   eventos: EventM[] = [];
 
+  //Definimos tres variables que se van a ir incrementando dependiendo del tipo de evento que se añada
+  countLog = 0;
+  countWarn = 0;
+  countError = 0;
+
   //Aqui se inyecta el eventService como una dependencia
-  constructor(private eventService: EventSService) {}
+  constructor(private eventService: EventSService, private loggerService : LoggerService) {}
 
 
   //Cuando se carge la pagina se llama al evento loadEventos() para cargar los eventos alamcenados en el localStorage al inicializar el servicio
@@ -24,8 +30,11 @@ export class EventListComponent implements OnInit {
   ngOnInit(): void {
     this.eventService.loadEventos();
     this.eventos = this.eventService.getEventos();
+
+    //obtener el conteo de los eventos
+    this.updateCounts();
+
   
-    console.log("Eventos cargados en EventListComponent:", this.eventos);
   }
 
   //Creamos un metod al cual le vamos a pasar un objeto del tipo EventM
@@ -40,5 +49,13 @@ export class EventListComponent implements OnInit {
     } else {
       this.eventos = this.eventService.getEventos().filter(ev => ev.classification === selectedValue);
     }
+  }
+
+  updateCounts() : void {
+    const count = this.loggerService.getCounts();
+
+    this.countLog = count.log;
+    this.countWarn = count.warn;
+    this.countError = count.error;
   }
 }
