@@ -1,0 +1,30 @@
+--INSTALAR BOOSTRAP EN LOCAL--
+1.- Para instalar boostrap en local debemos de poner el comando 
+npm install bootstrap jquery @popperjs/core
+
+2.- Despues en el archivo angular.json debemos de poner lo siguiente
+"styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
+
+--INSTALAR NGX-BOOSTRAP--
+1.- Para instalar ngx-boostrap debemos de poner el comando
+npm install ngx-bootstrap --save
+
+2.- Y en archivo angular.json en el apartado de "styles" debemos de añadir la siguiente linea
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css"
+
+--INSTALAR SERVIDOR JSON--
+1.- Para instalar json debemos de poenr el comando
+npm install -g json-server
+2.-Para que encience a correr el servidor json debemos de poenr el siguiente comando (el comando se debe de poner en donde se encuntra la carpeta)
+json-server --watch *NOMBRE DEL ARCHIVO*
+
+
+
