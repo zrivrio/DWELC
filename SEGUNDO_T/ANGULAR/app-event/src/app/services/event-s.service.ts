@@ -20,7 +20,6 @@ export class EventSService {
   //Metodo para agregar un nuevo evento a la lista
   //Recibe el parametro de evento del tipo EventM
   addEvento(evento: EventM): void {
-    console.log("Antes de agregar evento:", this.eventos);
 
     //Se asigna un ID al evento basado en la longitud actual del array eventos
     //TAmbien se establece la fecha de creacion del evento como la fechay hora actual
@@ -29,8 +28,6 @@ export class EventSService {
 
     //Se agrega el evnto al array de eventos
     this.eventos.push(evento);
-    
-    console.log("Evento agregado:", evento);
     
     //Se actualiza el contador correspondiente dependiendo de la clasificacion del evento
     this.loggerService.updateCounts(evento.classification);
@@ -64,7 +61,6 @@ export class EventSService {
        // Si el localStorage no está disponible, inicializamos un array vacío.
       this.eventos = [];
     }
-    console.log("Eventos cargados:", this.eventos);
   }
 
    // Método para obtener la lista de eventos.

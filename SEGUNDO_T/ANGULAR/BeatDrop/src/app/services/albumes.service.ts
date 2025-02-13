@@ -1,34 +1,30 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Album } from '../models/albumes'; 
+import { Musico } from '../models/musicos';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlbumesService {
-  private albumesSubject = new BehaviorSubject<Album[]>([]);
+  private musicosSubject = new BehaviorSubject<Musico[]>([]);
 
   constructor() {
     this.loadAlbumes();
   }
 
-  
-  getAlbumes() {
-    return this.albumesSubject.asObservable();
+  // Método para obtener la lista de músicos con sus álbumes
+  getMusicos() {
+    return this.musicosSubject.asObservable();
   }
 
-  addAlbum(album: Album): void {
-    const albumesActuales = this.albumesSubject.getValue();
-    album.id = albumesActuales.length + 1;
-    const nuevosAlbumes = [...albumesActuales, album];
-    this.albumesSubject.next(nuevosAlbumes);
-  }
-
+  // Carga los álbumes desde el servidor
   private async loadAlbumes() {
     try {
       const response = await fetch('http://localhost:3000/albumes');
-      const data: Album[] = await response.json();
-      this.albumesSubject.next(data);
+      const data = await response.json();
+
+      console.log("Datos recibidos:", data); // Para verificar la estructura
+      this.musicosSubject.next(data); // Guardamos la lista de músicos con sus álbumes
     } catch (error) {
       console.error('Error al cargar los álbumes:', error);
     }

@@ -6,29 +6,27 @@ import { Musico } from '../models/musicos';
   providedIn: 'root'
 })
 export class MusicosService {
-  private listaMusicos : Musico[] = [];
+  private musicosSubject = new BehaviorSubject<Musico[]>([]);
 
-  constructor() { 
+  constructor() {
     this.loadMusicos();
   }
 
+  // Método para obtener la lista de músicos como Observable
   getMusicos() {
-    return this.listaMusicos;
+    return this.musicosSubject.asObservable();
   }
 
-  addMusicos(musico : Musico): void{
-    console.log("se añade");
-    musico.id = this.listaMusicos.length + 1;
+  // Cargar músicos desde el servidor usando async/await
+  private async loadMusicos() {
+    try {
+      const response = await fetch('http://localhost:3000/musicos');
+      const data = await response.json();
 
-    this.listaMusicos.push(musico);
-  }
-
-   private loadMusicos() {
-    fetch('http://localhost:3000/musicos')
-      .then(response => response.json())
-      .then(data => {
-        this.listaMusicos.push(data); 
-      })
-      .catch(error => console.error('Error al cargar los empleados:', error));
+      console.log("Datos recibidos:", data); // Verificar la estructura en consola
+      this.musicosSubject.next(data); // Guardamos la lista de músicos
+    } catch (error) {
+      console.error('Error al cargar los músicos:', error);
+    }
   }
 }

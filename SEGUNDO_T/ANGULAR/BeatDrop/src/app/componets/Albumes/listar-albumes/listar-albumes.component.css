@@ -8,7 +8,9 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
     transition: transform 0.3s, box-shadow 0.3s; 
   }
-  
+  h1{
+    color: white;
+  }
   .musico-card:hover {
     transform: translateY(-5px); 
     box-shadow: 0 8px 25px #14accc; 

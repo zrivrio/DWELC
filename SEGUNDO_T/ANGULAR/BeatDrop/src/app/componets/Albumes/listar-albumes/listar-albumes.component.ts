@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { FooterComponent } from '../../footer/footer.component';
-import { Album } from '../../../models/albumes';
 import { AlbumesService } from '../../../services/albumes.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Musico } from '../../../models/musicos';
 
 
 
@@ -15,13 +15,13 @@ import { RouterModule } from '@angular/router';
   styleUrl: './listar-albumes.component.css'
 })
 export class ListarAlbumesComponent implements OnInit {
-  albumes: Album[] = [];
+  musicos: Musico[] = [];
 
   constructor(private albumesService: AlbumesService) {}
 
   ngOnInit(): void {
-    this.albumesService.getAlbumes().subscribe(data => {
-      this.albumes = data;
+    this.albumesService.getMusicos().subscribe(data => {
+      this.musicos = data;
     });
   }
 
