@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 })
 export class ProviderDetailComponent implements OnInit {
 
-  provider!: ProvidersM | undefined;
+  provider?: ProvidersM;
 
   constructor(private route: ActivatedRoute, private providerService : ProvidersService){}
 
@@ -22,7 +22,8 @@ export class ProviderDetailComponent implements OnInit {
     const providerIdFromRoute = Number(routeParams.get('providerId'));
 
     this.providerService.getProviders().subscribe( data => {
-      this.provider = data.find(p => p.id === providerIdFromRoute);
+      this.provider = data.find(p => Number(p.id) === providerIdFromRoute);
+      console.log(this.provider);
     })
   }
 
