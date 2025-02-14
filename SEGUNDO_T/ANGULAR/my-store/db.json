@@ -1,12 +1,15 @@
 {
     "providers": [
         {
+            "id": 1,
             "nombre": "TechWorld Inc."
         },
         {
+            "id":2,
             "nombre": "MobileMasters Co."
         },
         {
+            "id":3,
             "nombre": "GadgetGuru Ltd."
         }
     ]
