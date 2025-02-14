@@ -26,5 +26,8 @@ npm install -g json-server
 2.-Para que encience a correr el servidor json debemos de poenr el siguiente comando (el comando se debe de poner en donde se encuntra la carpeta)
 json-server --watch *NOMBRE DEL ARCHIVO*
 
+--CERRAR PUERTO ABIERTO--
+netstat -ano | findstr :*PUERTO*
+taskkill /PID *NUMERO* /F
 
 
