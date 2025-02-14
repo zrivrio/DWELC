@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ProvidersM } from '../models/providers';
+import { Product, products } from '../models/products';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,12 @@ export class ProvidersService {
 
   constructor(private http: HttpClient) { }
 
-  getProciders(){
+  getProviders(){
     return this.http.get<ProvidersM[]>(this.url);
+  }
+
+  getProductProvider(providerId : number) : Product[] | undefined{
+    return products.filter(p=> p.provider.id === providerId);
   }
 
   
