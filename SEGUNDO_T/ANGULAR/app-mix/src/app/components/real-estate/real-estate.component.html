@@ -1,1 +1,11 @@
-<p>real-estate works!</p>
+<div class="real-estate">
+    <h2>Bienes Raíces</h2>
+    <div class="property-list">
+      <div *ngFor="let property of properties" class="property-card">
+        <h3>{{ property.name }}</h3>
+        <p><strong>Ubicación:</strong> {{ property.location }}</p>
+        <p><strong>Precio:</strong> {{ property.price | currency }}</p>
+        <button (click)="viewDetails(property)" class="btn btn-primary">Ver Detalles</button>
+      </div>
+    </div>
+  </div>

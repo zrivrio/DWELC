@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+.product-grid, .event-list, .property-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .product-card, .event-card, .property-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    width: 300px;
+  }
+  
+  .btn {
+    margin: 5px;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.9em;
+  }

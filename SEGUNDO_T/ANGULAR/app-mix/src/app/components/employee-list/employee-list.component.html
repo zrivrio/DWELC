@@ -1,1 +1,14 @@
-<p>employee-list works!</p>
+<div class="employee-list">
+    <h2>Lista de Empleados</h2>
+    <div *ngIf="employees.length > 0; else loading">
+      <ul>
+        <li *ngFor="let employee of employees" class="employee-item">
+          <span class="employee-name">{{ employee.name }}</span>
+          <button (click)="viewDetails(employee)" class="btn btn-primary">Ver Detalles</button>
+        </li>
+      </ul>
+    </div>
+    <ng-template #loading>
+      <p>Cargando empleados...</p>
+    </ng-template>
+  </div>

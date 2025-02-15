@@ -1,1 +1,7 @@
-<p>products-details works!</p>
+<div class="product-details" *ngIf="product">
+    <h2>{{ product.name }}</h2>
+    <p><strong>Descripción:</strong> {{ product.description }}</p>
+    <p><strong>Precio:</strong> {{ product.price | currency }}</p>
+    <button (click)="addToCart(product!)" class="btn btn-success">Agregar al Carrito</button>
+    <a routerLink="/products" class="btn btn-secondary">Volver a la Lista</a>
+  </div>

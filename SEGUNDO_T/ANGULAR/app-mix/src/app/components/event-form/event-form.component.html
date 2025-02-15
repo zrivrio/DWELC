@@ -1,1 +1,46 @@
-<p>event-form works!</p>
+<div class="event-form">
+    <h2>Registrar Evento</h2>
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Título:</label>
+        <input id="title" formControlName="title" class="form-control" />
+        <div *ngIf="eventForm.get('title')?.invalid && eventForm.get('title')?.touched" class="error">
+          El título es requerido.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea id="description" formControlName="description" class="form-control"></textarea>
+        <div *ngIf="eventForm.get('description')?.invalid && eventForm.get('description')?.touched" class="error">
+          La descripción es requerida.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="type">Clasificación:</label>
+        <select id="type" formControlName="type" class="form-control">
+          <option value="log">Log</option>
+          <option value="warn">Warn</option>
+          <option value="error">Error</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="date">Fecha:</label>
+        <input type="date" id="date" formControlName="date" class="form-control" />
+        <div *ngIf="eventForm.get('date')?.invalid && eventForm.get('date')?.touched" class="error">
+          La fecha es requerida.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="employee">Empleado:</label>
+        <select id="employee" formControlName="employee" class="form-control">
+          <option *ngFor="let emp of employees" [value]="emp">{{ emp }}</option>
+        </select>
+      </div>
+  
+      <button type="submit" [disabled]="eventForm.invalid" class="btn btn-primary">Registrar Evento</button>
+    </form>
+  </div>

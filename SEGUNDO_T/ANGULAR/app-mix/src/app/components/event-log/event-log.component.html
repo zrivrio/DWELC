@@ -1,1 +1,24 @@
-<p>event-log works!</p>
+<div class="event-log">
+    <h2>Registro de Eventos</h2>
+    <div class="filters">
+      <button (click)="filterEvents('all')" class="btn btn-secondary">Todos</button>
+      <button (click)="filterEvents('log')" class="btn btn-info">Logs</button>
+      <button (click)="filterEvents('warn')" class="btn btn-warning">Warns</button>
+      <button (click)="filterEvents('error')" class="btn btn-danger">Errors</button>
+    </div>
+    <div class="event-list">
+      <div *ngFor="let event of filteredEvents" class="event-card">
+        <h3>{{ event.title }}</h3>
+        <p><strong>Descripción:</strong> {{ event.description }}</p>
+        <p><strong>Clasificación:</strong> {{ event.type }}</p>
+        <p><strong>Fecha:</strong> {{ event.date | date }}</p>
+        <p><strong>Empleado:</strong> {{ event.employee }}</p>
+      </div>
+    </div>
+    <div class="event-counts">
+      <p><strong>Total de Eventos:</strong> {{ events.length }}</p>
+      <p><strong>Logs:</strong> {{ getEventCountType('log') }}</p>
+      <p><strong>Warns:</strong> {{ getEventCountType('warn') }}</p>
+      <p><strong>Errors:</strong> {{ getEventCountType('error') }}</p>
+    </div>
+  </div>
