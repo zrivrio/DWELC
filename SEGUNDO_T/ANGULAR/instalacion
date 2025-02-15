@@ -30,4 +30,10 @@ json-server --watch *NOMBRE DEL ARCHIVO*
 netstat -ano | findstr :*PUERTO*
 taskkill /PID *NUMERO* /F
 
-
+--INTALAR PARA QUE EL SERVE Y JSON SE ENCIENDAN AL LA VEZ--
+1.-Hay que instalar este comando
+npx concurrently
+2.-Debemos de ir al package.son y añadir 
+    "serveJson": "concurrently \" json-server db.json \" \" ng serve \"",
+3.- Para ejecutar debemso de poner 
+npm run serveJson
