@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeM } from '../../models/employee.mode';
 import { EmployeeService } from '../../services/employee.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-employee-list',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './employee-list.component.html',
   styleUrl: './employee-list.component.css'
 })

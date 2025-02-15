@@ -1,0 +1,88 @@
+{
+    "employee": [
+        {
+            "id": 1,
+            "name": "Juan Pérez"
+        },
+        {
+            "id": 2,
+            "name": "María Gómez"
+        },
+        {
+            "id": 3,
+            "name": "Carlos López"
+        }
+    ],
+    "events": [
+        {
+            "title": "Error en el servidor",
+            "description": "El servidor no respondió durante 5 minutos.",
+            "type": "error",
+            "date": "2023-10-01T12:00:00Z",
+            "employee": {
+                "id": 1,
+                "name": "Juan Pérez"
+            }
+        },
+        {
+            "title": "Advertencia de almacenamiento",
+            "description": "El almacenamiento está al 90% de su capacidad.",
+            "type": "warn",
+            "date": "2023-10-02T14:30:00Z",
+            "employee": {
+                "id": 2,
+                "name": "María Gómez"
+            }
+        },
+        {
+            "title": "Registro de inicio de sesión",
+            "description": "El usuario admin inició sesión correctamente.",
+            "type": "log",
+            "date": "2023-10-03T09:15:00Z",
+            "employee": {
+                "id": 3,
+                "name": "Carlos López"
+            }
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "iPhone 13",
+            "price": 999,
+            "description": "El último smartphone de Apple con pantalla Super Retina XDR."
+        },
+        {
+            "id": 2,
+            "name": "Samsung Galaxy S21",
+            "price": 899,
+            "description": "Un potente smartphone Android con cámara profesional."
+        },
+        {
+            "id": 3,
+            "name": "Google Pixel 6",
+            "price": 799,
+            "description": "Un smartphone con IA integrada y cámara avanzada."
+        }
+    ],
+    "properties": [
+        {
+            "id": 1,
+            "name": "Casa en la playa",
+            "location": "Cancún",
+            "price": 500000
+        },
+        {
+            "id": 2,
+            "name": "Departamento céntrico",
+            "location": "CDMX",
+            "price": 300000
+        },
+        {
+            "id": 3,
+            "name": "Rancho en el campo",
+            "location": "Guadalajara",
+            "price": 700000
+        }
+    ]
+}

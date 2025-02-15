@@ -7,6 +7,7 @@ import { EventM } from '../models/event.mode';
 export class LoggerService {
 
   private events : EventM[] = [];
+  
 
   logEvent(event: EventM): void{
     this.events.push(event);
