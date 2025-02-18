@@ -70,4 +70,17 @@ export class EventSService {
   }
 
 
+  // Método para eliminar un evento de la lista.
+  // deleteEvento(id: number): void {
+  //   this.http.delete(`${this.url}/${id}`).subscribe(() => {
+  //     // Filtrar la lista de eventos para quitar el eliminado
+  //     this.eventos = this.eventos.filter(evento => evento.id !== id);
+      
+  //     // Guardar los cambios en localStorage
+  //     this.saveEventos();
+  //   });
+  // }
+  
+
+
 }
