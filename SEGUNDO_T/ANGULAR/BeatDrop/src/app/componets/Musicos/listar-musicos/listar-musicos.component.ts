@@ -18,7 +18,7 @@ export class ListarMusicosComponent {
   constructor(private musicosService: MusicosService) {}
 
   ngOnInit(): void {
-    this.musicosService.getMusicos().subscribe(data => {
+    this.musicosService.getAllMusicos().subscribe(data => {
       console.log("Músicos:", data);
       this.musicos = data;
     });

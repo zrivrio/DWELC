@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "serveJson": "concurrently \" json-server db.json \" \" ng serve \"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:BeatDrop": "node dist/beat-drop/server/server.mjs"
@@ -23,6 +24,7 @@
     "@angular/ssr": "^19.1.5",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
+    "concurrently": "^9.1.2",
     "express": "^4.18.2",
     "jquery": "^3.7.1",
     "rxjs": "~7.8.0",
