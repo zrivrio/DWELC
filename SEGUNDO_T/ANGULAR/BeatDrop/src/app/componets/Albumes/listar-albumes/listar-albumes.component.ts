@@ -38,8 +38,15 @@ export class ListarAlbumesComponent implements OnInit {
   }
 
   // Función para obtener los álbumes de un músico específico
-  getAlbumesByMusicoId(musicoId: string): Album[] {
-    return this.albumes.filter((album) => album.musico_id === musicoId);
+  getAlbumesByMusicoId(musicoId: number): Album[] {
+    return this.albumes.filter((album) => Number(album.musico_id)=== Number( musicoId));
+  }
+
+  // Función para eliminar los álbumes
+  deleteAlbum(id: number): void {
+    this.albumesService.deleteAlbum(id).subscribe(() => {
+      this.albumes = this.albumes.filter((album) => album.id !== id);
+    });
   }
 
   

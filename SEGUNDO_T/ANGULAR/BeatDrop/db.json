@@ -129,7 +129,7 @@
   ],
   "albumes": [
     {
-      "id": 101,
+      "id": "101",
       "musico_id": "1",
       "titulo": "Room for Squares",
       "anio_lanzamiento": 2001,
@@ -139,7 +139,7 @@
       "imagen_url": "./../assets/albumes/room_for_squares.jpg"
     },
     {
-      "id": 102,
+      "id": "102",
       "musico_id": "1",
       "titulo": "Continuum",
       "anio_lanzamiento": 2006,
@@ -149,7 +149,7 @@
       "imagen_url": "./../assets/albumes/continuum.jpg"
     },
     {
-      "id": 201,
+      "id": "201",
       "musico_id": "2",
       "titulo": "21",
       "anio_lanzamiento": 2011,
@@ -159,7 +159,7 @@
       "imagen_url": "./../assets/albumes/21.jpg"
     },
     {
-      "id": 202,
+      "id": "202",
       "musico_id": "2",
       "titulo": "25",
       "anio_lanzamiento": 2015,
@@ -169,7 +169,7 @@
       "imagen_url": "./../assets/albumes/25.jpg"
     },
     {
-      "id": 301,
+      "id": "301",
       "musico_id": "3",
       "titulo": "good kid, m.A.A.d city",
       "anio_lanzamiento": 2012,
@@ -179,7 +179,7 @@
       "imagen_url": "./../assets/albumes/good_kid_m-A-A-d_city.jpg"
     },
     {
-      "id": 302,
+      "id": "302",
       "musico_id": "3",
       "titulo": "To Pimp a Butterfly",
       "anio_lanzamiento": 2015,
@@ -189,7 +189,7 @@
       "imagen_url": "./../assets/albumes/to_pimp_a_butterfly.jpg"
     },
     {
-      "id": 401,
+      "id": "401",
       "musico_id": "4",
       "titulo": "1989",
       "anio_lanzamiento": 2014,
@@ -199,7 +199,7 @@
       "imagen_url": "./../assets/albumes/1989.jpg"
     },
     {
-      "id": 402,
+      "id": "402",
       "musico_id": "4",
       "titulo": "Red (Taylor's Version)",
       "anio_lanzamiento": 2021,
@@ -209,7 +209,7 @@
       "imagen_url": "./../assets/albumes/red.jpg"
     },
     {
-      "id": 501,
+      "id": "501",
       "musico_id": "5",
       "titulo": "Discovery",
       "anio_lanzamiento": 2001,
@@ -219,7 +219,7 @@
       "imagen_url": "./../assets/albumes/discovery.jpg"
     },
     {
-      "id": 502,
+      "id": "502",
       "musico_id": "5",
       "titulo": "Random Access Memories",
       "anio_lanzamiento": 2013,

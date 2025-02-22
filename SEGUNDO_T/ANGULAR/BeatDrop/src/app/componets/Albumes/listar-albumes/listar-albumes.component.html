@@ -1,4 +1,3 @@
-<app-navbar></app-navbar>
 <div class="container">
   <h1>Álbumes</h1>
   <a [routerLink]="['/albumes/crear']" class="btn btn-customA">Crear Álbum</a>
@@ -7,7 +6,7 @@
     <!-- Iterar sobre cada músico -->
     <div *ngFor="let musico of musicos" class="musico-card mb-5">
       <h3>{{ musico.nombre }}</h3>
-      
+
       <div class="d-flex flex-wrap justify-content-evenly">
         <!-- Filtrar y mostrar los álbumes del músico actual -->
         <div *ngFor="let album of getAlbumesByMusicoId(musico.id)" class="album-card mb-4 col-12 col-md-5">
@@ -20,11 +19,10 @@
 
           <p>
             <a [routerLink]="['/albumes/editar', album.id]" class="btn btn-customA mt-4">Editar</a>
-            <a [routerLink]="['/albumes/eliminar', album.id]" class="btn btn-customA mt-4">Eliminar</a>
+            <button class="btn btn-customA mt-4" (click)="deleteAlbum(album.id)" >Eliminar</button>
           </p>
         </div>
       </div>
     </div>
   </div>
 </div>
-<app-footer></app-footer>

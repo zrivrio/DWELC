@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Musico } from '../models/musicos';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Album } from '../models/albumes';
 
 @Injectable({
@@ -36,12 +36,16 @@ export class AlbumesService {
 
   getAllAlbumes() {return this.http.get<Album[]>(this.url)}
 
-  getAlbum(id: string) { return this.http.get<Album>(`${this.url}/${id}`); }
+  getAlbum(id: number) { return this.http.get<Album>(`${this.url}/${id}`); }
 
   addAlbum(album: Album) { return this.http.post<Album>(this.url, album); }
 
   updateAlbum(album: Album) { return this.http.put<Album>(`${this.url}/${album.id}`, album); }
 
-  deleteAlbum(id: string) { return this.http.delete(`${this.url}/${id}`); }
+  deleteAlbum(id: number) {
+    return this.http.delete(`${this.url}/${id}`, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
+  }
 
 }

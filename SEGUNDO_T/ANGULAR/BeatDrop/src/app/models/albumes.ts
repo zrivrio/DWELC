@@ -1,6 +1,6 @@
 export interface Album {
-    id: number | string; 
-    musico_id: string; 
+    id: number ; 
+    musico_id: number; 
     titulo: string;
     anio_lanzamiento: number;
     canciones: number; 

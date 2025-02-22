@@ -2,8 +2,8 @@ import { Album } from "./albumes";
 import { Ubicacion } from "./ubicacion";
 
 export interface Musico {
-  id: string; 
-  nombre: string; 
+  id: number; 
+  nombre: number; 
   genero: string; 
   nacionalidad: string;
   anio_debut: number; 
