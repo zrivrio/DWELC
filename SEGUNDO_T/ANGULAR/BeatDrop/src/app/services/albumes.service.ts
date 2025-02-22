@@ -34,7 +34,7 @@ export class AlbumesService {
   //   }
   // }
 
-  getAllAlbumes() {return this.http.get<Musico[]>(this.url)}
+  getAllAlbumes() {return this.http.get<Album[]>(this.url)}
 
   getAlbum(id: string) { return this.http.get<Album>(`${this.url}/${id}`); }
 

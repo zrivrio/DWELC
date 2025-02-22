@@ -2,11 +2,10 @@
 
 <div class="container">
     <h1>Músicos</h1>
-    <a routerLink="/crear-musico" class="btn btn-customM">Agregar Músico</a>
+    <a routerLink="/musicos/crear" class="btn btn-customM">Agregar Músico</a>
   
     <div class="musicos-container mt-5 d-flex flex-wrap justify-content-evenly">
       <div *ngFor="let musico of musicos" class="musico-card col-lg-3 col-md-4 col-sm-6">
-        <div class="musicos-card h-100">
           <!-- Imagen del músico -->
           <img [src]="musico.imagen_url" [alt]="musico.nombre" class="card-img-top">
           <div class="card-body">
@@ -21,11 +20,13 @@
             <p><strong>Coordenadas:</strong> {{ musico.ubicacion.coordenadas.latitud }}, {{ musico.ubicacion.coordenadas.longitud }}</p>
   
             <!-- Botón de Editar -->
-            <a [routerLink]="['/editar-musico', musico.id]" class="btn btn-customM mt-4">
+            <a [routerLink]="['/musicos/editar/', musico.id]" class="btn btn-customM mt-4">
               Editar
             </a>
+            <a [routerLink]="['/musicos/eliminar', musico.id]" class="btn btn-customM mt-4">
+              Eliminar
+            </a>
           </div>
-        </div>
       </div>
     </div>
   </div>

@@ -17,17 +17,32 @@ import { Album } from '../../../models/albumes';
   styleUrl: './listar-albumes.component.css'
 })
 export class ListarAlbumesComponent implements OnInit {
-  musicos: Musico[] = [];
+  musicos: Musico[] = []; // Lista de músicos
+  albumes: Album[] = [];
 
   private albumesService: AlbumesService = inject(AlbumesService);
+  private musicosService: MusicosService = inject(MusicosService);
 
   constructor() {}
 
   ngOnInit(): void {
-    this.albumesService.getAllAlbumes().subscribe(data => {
+    // Obtener la lista de músicos
+    this.musicosService.getAllMusicos().subscribe((data) => {
       this.musicos = data;
     });
+
+    // Obtener la lista de álbumes
+    this.albumesService.getAllAlbumes().subscribe((data) => {
+      this.albumes = data;
+    });
   }
+
+  // Función para obtener los álbumes de un músico específico
+  getAlbumesByMusicoId(musicoId: string): Album[] {
+    return this.albumes.filter((album) => album.musico_id === musicoId);
+  }
+
+  
 
 
 }

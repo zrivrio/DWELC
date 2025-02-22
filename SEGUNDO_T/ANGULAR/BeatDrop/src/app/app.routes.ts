@@ -12,9 +12,9 @@ export const routes: Routes = [
     {path:'musicos', component:ListarMusicosComponent},
     {path:'albumes', component:ListarAlbumesComponent},
     {path:'musicos/crear', component:CrearMusicosComponent},
-    {path:'musicos/editar', component:EditarMusicosComponent},
+    {path:'musicos/editar/:idMusico', component:EditarMusicosComponent},
     {path:'albumes/crear', component:CrearAlbumesComponent},
-    {path:'albumes/editar', component:EditarAlbumesComponent}
+    {path:'albumes/editar/:idAlbum', component:EditarAlbumesComponent}
 
 
 ];
