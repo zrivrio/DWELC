@@ -17,8 +17,7 @@ export class LoggerService {
 
   //Obtener conteos desde el localStorage
   private loadCountsFormStorage(): void {
-    if( typeof localStorage !== 'undefined'){
-
+    if(typeof localStorage !== 'undefined'){
       const eventosGuardados = localStorage.getItem('eventos');
       if (eventosGuardados){
         const eventos : EventM[] = JSON.parse(eventosGuardados);
@@ -50,6 +49,16 @@ export class LoggerService {
     this.saveCountsToStorage();
   
   }
+
+  // Nuevo método para disminuir el contador
+decreaseCount(classification: 'log' | 'warn' | 'error') {
+  if (classification === 'log' && this.countLog > 0) this.countLog--;
+  else if (classification === 'warn' && this.countWarn > 0) this.countWarn--;
+  else if (classification === 'error' && this.countError > 0) this.countError--;
+
+  this.saveCountsToStorage(); // Guardar los cambios en localStorage
+}
+
   
   private saveCountsToStorage() :void{
     localStorage.setItem('counts', JSON.stringify(this.getCounts()));
