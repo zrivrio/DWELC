@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../../navbar/navbar.component';
-import { FooterComponent } from '../../footer/footer.component';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AlbumesService } from '../../../services/albumes.service';
 import { MusicosService } from '../../../services/musicos.service';
 import { Musico } from '../../../models/musicos';
 import { CommonModule } from '@angular/common';
 import { Album } from '../../../models/albumes';
+import { Router } from '@angular/router';
+import { NavbarComponent } from "../../navbar/navbar.component";
 
 @Component({
   selector: 'app-crear-albumes',
-  imports: [NavbarComponent, FooterComponent, ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, NavbarComponent],
   templateUrl: './crear-albumes.component.html',
   styleUrl: './crear-albumes.component.css'
 })
@@ -18,7 +18,10 @@ export class CrearAlbumesComponent {
   albumForm: FormGroup;
   musicos: Musico[] = [];
 
-  constructor(private fb: FormBuilder, private albumService: AlbumesService, private musicoService: MusicosService) {
+  constructor(private fb: FormBuilder, 
+    private albumService: AlbumesService, 
+    private musicoService: MusicosService,
+    private router: Router) {
     this.albumForm = this.fb.group({
       musico_id: ['', Validators.required],
       titulo: ['', Validators.required],
@@ -58,7 +61,7 @@ export class CrearAlbumesComponent {
     
         // Crear el nuevo álbum
         const newAlbum: Album = {
-          id: newId, // Asignar el nuevo ID numérico
+          id: newId, 
           musico_id: Number(this.albumForm.value.musico_id),
           titulo: this.albumForm.value.titulo,
           anio_lanzamiento: this.albumForm.value.anio_lanzamiento,
@@ -68,20 +71,22 @@ export class CrearAlbumesComponent {
           imagen_url: this.albumForm.value.imagen_url,
         };
     
-        // Enviar el nuevo álbum al servicio
+       
         this.albumService.addAlbum(newAlbum).subscribe((res) => {
           console.log('Álbum creado:', res);
         });
       });
+      this.router.navigate(['/albumes']);
+      
     } else {
       console.log('Formulario no válido');
     }
   }
 
-  onFileChange(event: any): void {
-    const file = event.target.files[0];
-    this.albumForm.patchValue({
-      imagen_url: file,
-    });
-  }
+  // onFileChange(event: any): void {
+  //   const file = event.target.files[0];
+  //   this.albumForm.patchValue({
+  //     imagen_url: file,
+  //   });
+  // }
 }

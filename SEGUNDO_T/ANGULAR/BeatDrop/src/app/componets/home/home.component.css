@@ -1,0 +1,83 @@
+/* Estilos generales */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Mejoras en las tarjetas */
+.card {
+  background: white;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Efecto hover con colores personalizados */
+.M:hover {
+  box-shadow: 0 10px 30px #14accc;
+}
+
+.A:hover {
+  box-shadow: 0 10px 30px #fb2484;
+}
+
+/* Ajustes en los botones */
+.btn-customM,
+.btn-customA {
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-customM {
+  background: linear-gradient(45deg, #14accc, #0e7ca1);
+}
+
+.btn-customA {
+  background: linear-gradient(45deg, #fb2484, #c71585);
+}
+
+.btn-customM:hover,
+.btn-customA:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* Tarjetas de músicos */
+.musico-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  color: #2b2b2b;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.musico-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px #14accc;
+}
+
+/* Mejoras en la responsividad */
+@media (max-width: 768px) {
+  .musico-card {
+    width: 100%;
+  }
+  
+  .col-5 {
+    width: 100%;
+  }
+}

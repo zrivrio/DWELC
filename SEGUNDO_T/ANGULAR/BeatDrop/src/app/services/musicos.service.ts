@@ -36,13 +36,13 @@ export class MusicosService {
 
    getAllMusicos() {return this.http.get<Musico[]>(this.url)}
   
-    getMusico(id: string) { return this.http.get<Musico>(`${this.url}/${id}`); }
+    getMusico(id: number) { return this.http.get<Musico>(`${this.url}/${id}`); }
   
     addMusico(musico: Musico) { return this.http.post<Musico>(this.url, musico); }
   
     updateMusico(musico: Musico) { return this.http.put<Musico>(`${this.url}/${musico.id}`, musico); }
   
-    deleteMusico(id: string) { return this.http.delete(`${this.url}/${id}`); }
+    deleteMusico(id: number) { return this.http.delete(`${this.url}/${id}`); }
 
 
 }
